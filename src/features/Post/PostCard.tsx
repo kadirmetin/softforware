@@ -1,5 +1,5 @@
 import { Avatar, Card, Flex, Image, Kbd, Text } from "@mantine/core";
-import { FC } from "react";
+import type { FC } from "react";
 import { getTimeLabel } from "~/core/date";
 import { api } from "~/utils/api";
 import { usePostStyles } from "./Post.styles";

@@ -1,5 +1,6 @@
 import { ActionIcon, Badge, Menu } from "@mantine/core";
-import { FC, MouseEvent } from "react";
+import { MouseEvent } from "react";
+import type { FC } from "react";
 import { usePostStyles } from "./Post.styles";
 import {
   IconAlertTriangleFilled,
@@ -8,7 +9,6 @@ import {
   IconTrash,
 } from "@tabler/icons-react";
 import { useRouter } from "next/router";
-import { useMutation, useQuery } from "@tanstack/react-query";
 import { notifications } from "@mantine/notifications";
 import { modals } from "@mantine/modals";
 import { api } from "~/utils/api";
@@ -22,7 +22,7 @@ export const PostOptions: FC<PostOptionsProps> = ({ id }) => {
   const utils = api.useContext();
   const { classes } = usePostStyles();
 
-  const { mutateAsync } = api.post.deletePost.useMutation({
+  const { mutateAsync: deletePostMutation } = api.post.deletePost.useMutation({
     onSuccess: async () => {
       await utils.post.getAllPosts.invalidate();
       await utils.notification.getAllNotifications.invalidate();
@@ -59,7 +59,7 @@ export const PostOptions: FC<PostOptionsProps> = ({ id }) => {
       ),
       labels: { confirm: "Delete post", cancel: "Cancel" },
       confirmProps: { color: "red" },
-      onConfirm: () => mutateAsync(id),
+      onConfirm: () => deletePostMutation(id),
     });
   };
 
@@ -67,7 +67,7 @@ export const PostOptions: FC<PostOptionsProps> = ({ id }) => {
     event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     event?.preventDefault();
-    //TODO: create id page of post
+    // TODO: create id page of post
     await router.push(`/post/${id}`);
   };
 

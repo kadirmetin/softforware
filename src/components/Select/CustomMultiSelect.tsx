@@ -1,4 +1,5 @@
-import { forwardRef, FC, ReactNode } from "react";
+import type { FC, ReactNode } from "react";
+import { forwardRef } from "react";
 import { useSelectStyles } from "./Select.styles";
 import {
   Box,
@@ -39,7 +40,6 @@ export const CustomMultiSelect: FC<Props> = ({ formElement }) => {
     />
   );
 };
-// eslint-disable-next-line react/display-name
 const Item = forwardRef<HTMLDivElement, SelectItemProps & { icon: ReactNode }>(
   ({ label, icon, ...others }, ref) => (
     <div ref={ref} {...others}>

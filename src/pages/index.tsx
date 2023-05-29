@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import { FC } from "react";
+import type { FC } from "react";
 import { PostList } from "~/features/Post";
 
 const Home: NextPage = () => {

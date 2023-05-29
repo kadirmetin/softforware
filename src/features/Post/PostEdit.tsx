@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect } from "react";
+import type { FC } from "react";
 import { api } from "~/utils/api";
 import { usePostStyles } from "./Post.styles";
 import { useMutation } from "@tanstack/react-query";

@@ -1,8 +1,8 @@
+import type { FC } from "react";
 import { Box, Flex, rem, Text } from "@mantine/core";
 import { useHeadroom } from "@mantine/hooks";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FC } from "react";
 import { useLayoutStyles } from "./Layout.styles";
 import { Authentication } from "~/features/Authentication";
 import { Notification } from "~/components/Notification";
@@ -34,7 +34,9 @@ export const Header: FC = () => {
             align="center"
             gap={15}
             className={classes.pointer}
-            onClick={() => router.push("/")}
+            onClick={async () => {
+              await router.push("/");
+            }}
           >
             <Image src="/logo.png" width={50} height={50} alt="logo" />
             <Text weight="bold" size={22}>

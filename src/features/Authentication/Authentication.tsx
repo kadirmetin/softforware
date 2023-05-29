@@ -1,7 +1,7 @@
 import { Avatar, Button, Menu } from "@mantine/core";
 import { IconLogout } from "@tabler/icons-react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { FC } from "react";
+import type { FC } from "react";
 import { useAuthenticationStyles } from "./Authentication.styles";
 
 export const Authentication: FC = () => {
@@ -9,7 +9,7 @@ export const Authentication: FC = () => {
 
   const { classes } = useAuthenticationStyles();
 
-  const handleSignOut = async () => {
+  const handleSignOut: VoidFunction = async () => {
     await signOut();
   };
 

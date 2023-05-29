@@ -1,4 +1,5 @@
-import { useState, FC } from "react";
+import { useState } from "react";
+import type { FC } from "react";
 import { api } from "~/utils/api";
 import { useForm, zodResolver } from "@mantine/form";
 import { useMutation } from "@tanstack/react-query";

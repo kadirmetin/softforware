@@ -2,8 +2,8 @@ import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { ModalsProvider } from "@mantine/modals";
+import type { ColorScheme } from "@mantine/core";
 import {
-  ColorScheme,
   ColorSchemeProvider,
   DEFAULT_THEME,
   MantineProvider,
@@ -63,7 +63,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     primaryColor: "primary",
     white: "#efe7db",
     black: "#202023",
-    fontFamily: ""
+    fontFamily: "",
   };
 
   return (

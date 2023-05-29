@@ -13,8 +13,8 @@ export const Notification = () => {
 
   const { mutateAsync } = api.notification.seeNotification.useMutation();
 
-  const onNotificationClick = (id: string) => {
-    mutateAsync(id);
+  const onNotificationClick = async (id: string) => {
+    await mutateAsync(id);
     router.push(`/post/${id}`);
   };
 

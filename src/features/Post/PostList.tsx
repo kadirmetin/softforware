@@ -1,5 +1,5 @@
 import { Button, Flex, Text } from "@mantine/core";
-import { FC } from "react";
+import type { FC } from "react";
 import { usePostStyles } from "./Post.styles";
 import { useDisclosure } from "@mantine/hooks";
 import { api } from "~/utils/api";
@@ -20,7 +20,7 @@ export const PostList: FC = () => {
     <>
       <Flex justify="space-between" className={classes.container}>
         <Text weight="bold" size={20}>
-          Kafka Post
+          Posts
         </Text>
         <Button onClick={open} leftIcon={<IconPlus />}>
           Create Post
