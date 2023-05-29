@@ -1,0 +1,1 @@
+export { ThemIcon } from "./ThemIcon";

@@ -1,5 +1,8 @@
 import { type NextPage } from "next";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
+import { FC } from "react";
+import { PostList } from "~/features/Post";
 
 const Home: NextPage = () => {
   return (
@@ -7,13 +10,27 @@ const Home: NextPage = () => {
       <Head>
         <title>Anasayfa | Softforware</title>
         <meta name="description" content="Blog for developers" />
-        <link rel="icon" href="/softforware.png" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>HELLO WORLD</div>
+        <DefaultAuth />
       </main>
     </>
   );
 };
 
 export default Home;
+
+const DefaultAuth: FC = () => {
+  const { data: session } = useSession();
+
+  return (
+    <>
+      {session ? (
+        <PostList />
+      ) : (
+        <span style={{ textAlign: "center" }}>Not logged in</span>
+      )}
+    </>
+  );
+};
