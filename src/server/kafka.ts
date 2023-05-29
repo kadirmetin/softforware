@@ -1,6 +1,10 @@
 import { Kafka } from "kafkajs";
 import { prisma } from "./db";
 
+interface ParsedMessage {
+  id: string;
+}
+
 const kafka = new Kafka({
   clientId: "my-app",
   brokers: ["cluster.playground.cdkt.io:9092"],
@@ -47,14 +51,14 @@ export const runConsumer = async () => {
 
     await Promise.race([
       consumer.run({
-        eachMessage: async ({ message }): Promise<void> => {
+        eachMessage: async ({ message }) => {
           try {
             const users = await prisma.user.findMany();
 
             await Promise.all(
               users.map(async (user) => {
                 const messageValue = message.value?.toString() || "";
-                const parsedMessage = JSON.parse(messageValue);
+                const parsedMessage: ParsedMessage = JSON.parse(messageValue);
 
                 await prisma.notification.create({
                   data: {
