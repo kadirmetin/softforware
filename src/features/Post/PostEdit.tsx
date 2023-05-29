@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, type FC, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { api } from "~/utils/api";
 import { usePostStyles } from "./Post.styles";
 import { useMutation } from "@tanstack/react-query";
@@ -67,19 +67,23 @@ export const PostEdit: FC<PostEditProps> = ({ id }) => {
 
     console.log("imageUrl", imageUrl);
 
-    await mutateAsync({
-      id,
-      data: {
-        ...rest,
-        technos: technos ? technos.join(", ") : "",
-        image: imageUrl || "",
-      },
-    });
+    try {
+      await mutateAsync({
+        id,
+        data: {
+          ...rest,
+          technos: technos ? technos.join(", ") : "",
+          image: imageUrl || "",
+        },
+      });
 
-    setLoading(false);
+      setLoading(false);
 
-    form.reset();
-    close();
+      form.reset();
+      close();
+    } catch (error) {
+      // Handle the error here
+    }
   };
 
   useEffect(() => {
@@ -92,6 +96,7 @@ export const PostEdit: FC<PostEditProps> = ({ id }) => {
         }
 
         form.setValues({
+          ...form.values, // Güncellenmiş satır
           title: data.title,
           link: data.link,
           description: data.description,

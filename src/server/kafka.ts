@@ -1,4 +1,4 @@
-import { Kafka, Producer } from "kafkajs";
+import { Kafka } from "kafkajs";
 import { prisma } from "./db";
 
 const kafka = new Kafka({
@@ -12,7 +12,7 @@ const kafka = new Kafka({
   },
 });
 
-const producer: Producer = kafka.producer();
+const producer = kafka.producer();
 
 const consumer = kafka.consumer({ groupId: "my-group" });
 
@@ -47,16 +47,19 @@ export const runConsumer = async () => {
 
     await Promise.race([
       consumer.run({
-        eachMessage: async ({ message }) => {
+        eachMessage: async ({ message }): Promise<void> => {
           try {
             const users = await prisma.user.findMany();
 
             await Promise.all(
               users.map(async (user) => {
+                const messageValue = message.value?.toString() || "";
+                const parsedMessage = JSON.parse(messageValue);
+
                 await prisma.notification.create({
                   data: {
-                    message: message.value?.toString() || "",
-                    id: JSON.parse(message.value?.toString() || "").id,
+                    message: messageValue,
+                    id: parsedMessage.id,
                     user: { connect: { id: user.id } },
                     read: false,
                   },

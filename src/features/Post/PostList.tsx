@@ -1,5 +1,5 @@
 import { Button, Flex, Text } from "@mantine/core";
-import { type FC } from "react";
+import { FC } from "react";
 import { usePostStyles } from "./Post.styles";
 import { useDisclosure } from "@mantine/hooks";
 import { api } from "~/utils/api";

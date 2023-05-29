@@ -1,4 +1,4 @@
-import { forwardRef, type FC, type ReactNode } from "react";
+import { forwardRef, FC, ReactNode } from "react";
 import { useSelectStyles } from "./Select.styles";
 import {
   Box,

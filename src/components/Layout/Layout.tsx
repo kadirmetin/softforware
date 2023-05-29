@@ -1,4 +1,4 @@
-import { type ReactNode, type FC } from "react";
+import { ReactNode, FC } from "react";
 import { Header } from "./Header";
 import { useLayoutStyles } from "./Layout.styles";
 

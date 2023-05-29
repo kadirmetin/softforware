@@ -1,4 +1,4 @@
-import { runConsumer, sendMessages } from "~/server/kafka";
+import { sendMessages } from "~/server/kafka";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { z } from "zod";
 

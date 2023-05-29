@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { useState, FC } from "react";
 import { api } from "~/utils/api";
 import { useForm, zodResolver } from "@mantine/form";
 import { useMutation } from "@tanstack/react-query";
@@ -39,11 +39,9 @@ export const PostModal: FC<PostModalProps> = ({ opened, close }) => {
   });
 
   const { mutateAsync } = api.post.addPost.useMutation({
-    onSuccess: () => {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      utils.post.getAllPosts.invalidate();
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      utils.notification.getAllNotifications.invalidate();
+    onSuccess: async () => {
+      await utils.post.getAllPosts.invalidate();
+      await utils.notification.getAllNotifications.invalidate();
     },
   });
 
