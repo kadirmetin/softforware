@@ -15,6 +15,10 @@ export const Header: FC = () => {
 
   const pinned = useHeadroom({ fixedAt: 120 });
 
+  const handleLogoClick = () => {
+    router.push("/");
+  };
+
   return (
     <Box
       sx={(theme) => ({
@@ -34,9 +38,7 @@ export const Header: FC = () => {
             align="center"
             gap={15}
             className={classes.pointer}
-            onClick={async () => {
-              await router.push("/");
-            }}
+            onClick={handleLogoClick}
           >
             <Image src="/logo.png" width={50} height={50} alt="logo" />
             <Text weight="bold" size={22}>

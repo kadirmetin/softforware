@@ -83,33 +83,37 @@ export const PostEdit: FC<PostEditProps> = ({ id }) => {
       form.reset();
       close();
     } catch (error) {
-      // Handle the error here
+      console.log(error);
     }
   };
 
   useEffect(() => {
     const updateFormValues = async () => {
-      if (data) {
-        let image = null;
-        if (data.image) {
-          const file = await imageLinkToFile(data.image);
-          image = new File([file], file.name, { type: file.type });
-        }
+      try {
+        if (data) {
+          let image = null;
+          if (data.image) {
+            const file = await imageLinkToFile(data.image);
+            image = new File([file], file.name, { type: file.type });
+          }
 
-        form.setValues({
-          ...form.values, // Güncellenmiş satır
-          title: data.title,
-          link: data.link,
-          description: data.description,
-          timeReading: data.timeReading,
-          technos: data.technos?.split(",").map((techno) => techno.trim()),
-          image: image ?? undefined,
-        });
+          form.setValues({
+            ...form.values,
+            title: data.title,
+            link: data.link,
+            description: data.description,
+            timeReading: data.timeReading,
+            technos: data.technos?.split(",").map((techno) => techno.trim()),
+            image: image ?? undefined,
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
     };
 
     updateFormValues();
-  }, [data]);
+  }, [data, form]);
 
   return (
     <>

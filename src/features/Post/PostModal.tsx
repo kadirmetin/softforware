@@ -55,7 +55,7 @@ export const PostModal: FC<PostModalProps> = ({ opened, close }) => {
 
     console.log("imageUrl", imageUrl);
 
-    await mutateAsync({
+    void mutateAsync({
       ...rest,
       technos: technos ? technos.join(", ") : "",
       image: imageUrl || "",

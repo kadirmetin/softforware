@@ -10,7 +10,9 @@ export const Authentication: FC = () => {
   const { classes } = useAuthenticationStyles();
 
   const handleSignOut: VoidFunction = async () => {
-    await signOut();
+    await signOut().catch((error) => {
+      console.log(error);
+    });
   };
 
   return session ? (
@@ -22,7 +24,10 @@ export const Authentication: FC = () => {
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Item onClick={handleSignOut} icon={<IconLogout size={14} />}>
+        <Menu.Item
+          onClick={() => void handleSignOut()}
+          icon={<IconLogout size={14} />}
+        >
           Sign out
         </Menu.Item>
       </Menu.Dropdown>

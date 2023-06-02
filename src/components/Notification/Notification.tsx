@@ -15,7 +15,9 @@ export const Notification = () => {
 
   const onNotificationClick = async (id: string) => {
     await mutateAsync(id);
-    router.push(`/post/${id}`);
+    await router.push(`/post/${id}`).catch((error) => {
+      console.log(error);
+    });
   };
 
   return (
@@ -36,7 +38,7 @@ export const Notification = () => {
             return (
               <Menu.Item
                 key={i}
-                onClick={() => onNotificationClick(notification.id)}
+                onClick={() => void onNotificationClick(notification.id)}
               >
                 <Flex gap={20} align="center">
                   <Avatar radius="xl" color="indigo" src={data.image} />

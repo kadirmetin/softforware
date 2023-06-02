@@ -51,13 +51,13 @@ export const runConsumer = async () => {
 
     await Promise.race([
       consumer.run({
-        eachMessage: async ({ message }) => {
+        eachMessage: async ({ message }): Promise<void> => {
           try {
             const users = await prisma.user.findMany();
 
             await Promise.all(
               users.map(async (user) => {
-                const messageValue = message.value?.toString() || "";
+                const messageValue: string = message.value?.toString() || "";
                 const parsedMessage: ParsedMessage = JSON.parse(messageValue);
 
                 await prisma.notification.create({

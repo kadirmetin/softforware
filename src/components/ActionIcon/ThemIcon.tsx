@@ -7,11 +7,15 @@ export const ThemIcon: FC = () => {
 
   const dark = colorScheme === "dark";
 
+  const handleClick = () => {
+    toggleColorScheme();
+  };
+
   return (
     <ActionIcon
       size="lg"
       color={dark ? "yellow" : "dark.9"}
-      onClick={() => toggleColorScheme()}
+      onClick={handleClick}
       title="toggle color scheme"
     >
       {dark ? <IconSunHigh /> : <IconMoonStars />}

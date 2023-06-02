@@ -1,6 +1,5 @@
 import { ActionIcon, Badge, Menu } from "@mantine/core";
-import { MouseEvent } from "react";
-import type { FC } from "react";
+import type { FC, MouseEvent } from "react";
 import { usePostStyles } from "./Post.styles";
 import {
   IconAlertTriangleFilled,
@@ -59,16 +58,16 @@ export const PostOptions: FC<PostOptionsProps> = ({ id }) => {
       ),
       labels: { confirm: "Delete post", cancel: "Cancel" },
       confirmProps: { color: "red" },
-      onConfirm: () => deletePostMutation(id),
+      onConfirm: () => void deletePostMutation(id),
     });
   };
 
-  const onEdit = async (
+  const onEdit = (
     event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     event?.preventDefault();
     // TODO: create id page of post
-    await router.push(`/post/${id}`);
+    void router.push(`/post/${id}`);
   };
 
   return (
