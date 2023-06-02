@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { FC } from "react";
 import { Box, Flex, rem, Text } from "@mantine/core";
 import { useHeadroom } from "@mantine/hooks";

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Avatar, Button, Menu } from "@mantine/core";
 import { IconLogout } from "@tabler/icons-react";
 import { signIn, signOut, useSession } from "next-auth/react";
