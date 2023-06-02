@@ -15,8 +15,8 @@ export const Header: FC = () => {
 
   const pinned = useHeadroom({ fixedAt: 120 });
 
-  const handleLogoClick = () => {
-    router.push("/");
+  const handleLogoClick = async () => {
+    await router.push("/");
   };
 
   return (

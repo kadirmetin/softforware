@@ -9,8 +9,8 @@ export const Authentication: FC = () => {
 
   const { classes } = useAuthenticationStyles();
 
-  const handleSignOut: VoidFunction = async () => {
-    await signOut().catch((error) => {
+  const handleSignOut: VoidFunction = () => {
+    signOut().catch((error) => {
       console.log(error);
     });
   };

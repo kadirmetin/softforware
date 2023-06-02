@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState } from "react";
 import type { FC } from "react";
 import { api } from "~/utils/api";

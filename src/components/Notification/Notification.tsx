@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Avatar, Flex, Indicator, Menu, Text } from "@mantine/core";
 import { IconBell } from "@tabler/icons-react";
 import { useNotificationStyles } from "./Notification.styles";

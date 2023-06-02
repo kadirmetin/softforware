@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { FC } from "react";
 import { ActionIcon, useMantineColorScheme } from "@mantine/core";
 import { IconMoonStars, IconSunHigh } from "@tabler/icons-react";

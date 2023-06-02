@@ -58,7 +58,7 @@ export const runConsumer = async () => {
             await Promise.all(
               users.map(async (user) => {
                 const messageValue: string = message.value?.toString() || "";
-                const parsedMessage: ParsedMessage = JSON.parse(messageValue);
+                const parsedMessage = JSON.parse(messageValue) as ParsedMessage;
 
                 await prisma.notification.create({
                   data: {
