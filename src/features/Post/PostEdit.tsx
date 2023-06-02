@@ -82,7 +82,6 @@ export const PostEdit: FC<PostEditProps> = ({ id }) => {
       setLoading(false);
 
       form.reset();
-      close();
     } catch (error) {
       console.log(error);
     }
