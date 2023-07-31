@@ -9,13 +9,13 @@ import Menu from "@mui/material/Menu";
 import { signIn, signOut } from "next-auth/react";
 import { Session } from "next-auth/core/types";
 
-type UserMenuProps = {
+interface UserMenuProps {
   session: Session | null;
   settings: string[];
-};
+}
 
 const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+  const [anchorElUser, setAnchorElUser] = React.useState<HTMLElement | null>(
     null
   );
 

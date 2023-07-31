@@ -10,9 +10,9 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 
-type NavMenuProps = {
+interface NavMenuProps {
   pages: string[];
-};
+}
 
 const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
