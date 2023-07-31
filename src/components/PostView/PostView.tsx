@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -14,8 +14,8 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
           <Image src={"/logo.png"} alt="logo" width={180} height={180} />
         </Box>
 
-        <Typography>{}</Typography>
-        <Typography>{}</Typography>
+        <Typography variant="h4">{"test"}</Typography>
+        <Typography>{"test"}</Typography>
       </Container>
     </>
   );
