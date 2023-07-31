@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import { signIn, signOut } from "next-auth/react";
-import { Session } from "next-auth/core/types";
+import type { Session } from "next-auth/core/types";
 
 interface UserMenuProps {
   session: Session | null;

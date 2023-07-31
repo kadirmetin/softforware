@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
 
