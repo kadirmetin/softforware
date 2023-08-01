@@ -10,6 +10,14 @@ interface PostViewProps {
 }
 
 interface Post {
+  id: string;
+  createdAt: Date;
+  title: string;
+  image: string;
+  content: string;
+  published: boolean;
+  authorId: string;
+  categoryId: string | null;
   Category: { id: string; name: string; postCount: number } | null;
   author: {
     id: string;
@@ -18,9 +26,6 @@ interface Post {
     emailVerified: Date | null;
     image: string | null;
   };
-  title: string;
-  image: string;
-  content: string;
 }
 
 export const PostView: FC<PostViewProps> = ({ id }) => {
