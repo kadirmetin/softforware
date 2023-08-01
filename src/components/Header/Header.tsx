@@ -4,12 +4,12 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
+import Image from "next/image";
 
 import NavMenu from "./components/NavMenu";
 import Search from "./components/Search";
 import UserMenu from "./components/UserMenu";
-import Link from "next/link";
-import Image from "next/image";
 
 const settings = ["Profile", "Account", "Dashboard"];
 const pages = ["Products", "Pricing", "Blog"];
@@ -24,11 +24,7 @@ function ResponsiveAppBar() {
           {/* WEBLOGO - START */}
           <Link href={"/"}>
             <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                style={{ height: "auto", width: 84 }}
-              />
+              <Image src="/logo.png" alt="logo" width={84} height={150}/>
             </Box>
           </Link>
           {/* WEBLOGO - END */}

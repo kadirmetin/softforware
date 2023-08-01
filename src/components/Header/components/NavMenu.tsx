@@ -6,6 +6,7 @@ import {
   Menu,
   MenuItem,
   Typography,
+  Link,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
@@ -72,9 +73,12 @@ const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
           flexGrow: 2,
           justifyContent: "center",
           alignItems: "center",
+          cursor: "pointer",
         }}
       >
-        <Image src="/logo.png" alt="Logo" style={{ height: 84, width: 84 }} />
+        <Link href="/">
+          <Image src="/logo.png" alt="logo" height={84} width={84} />
+        </Link>
       </Box>
       {/* MOBILELOGO - END */}
 
