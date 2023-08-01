@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Card,
@@ -15,29 +14,10 @@ import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { api } from "~/utils/api";
 import getFormattedTimeElapsed from "~/utils/time";
 
-interface Post {
-  id: string;
-  createdAt: Date;
-  title: string;
-  image: string;
-  content: string;
-  published: boolean;
-  authorId: string;
-  categoryId: string | null;
-  Category: { id: string; name: string; postCount: number } | null;
-  author: {
-    id: string;
-    name: string | null;
-    email: string | null;
-    emailVerified: Date | null;
-    image: string;
-  };
-}
-
-const PostView = () => {
+const PostListItem = () => {
   const { data } = api.posts.getAll.useQuery();
 
-  // TODO: Graphic Design is my Passion
+  //TODO: Graphic Design is my Passion
 
   return (
     <Box
@@ -45,14 +25,14 @@ const PostView = () => {
         flex: 2,
       }}
     >
-      {data?.map((post: Post, index: number) => (
+      {data?.map((post, index) => (
         <Grid item key={index}>
           <CardActionArea component="a" href={`/post/${post.id}`}>
             <Card sx={{ display: "flex", height: 200, mt: 2, mb: 2 }}>
               <CardMedia
                 component="img"
                 sx={{ width: 160, display: { xs: "none", sm: "block" } }}
-                image={post.image ?? ""}
+                image={post.image!}
               />
               <CardContent
                 sx={{
@@ -87,11 +67,11 @@ const PostView = () => {
                     color="text.secondary"
                     sx={{ mr: 2 }}
                   >
-                    {post.Category?.name ?? "No Category"}
+                    {post.Category?.name}
                   </Typography>
                   <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
                   <Typography variant="subtitle1" color="text.secondary">
-                    {post.author.name ?? "No Author"}
+                    {post.author.name}
                   </Typography>
                 </Box>
               </CardContent>
@@ -103,4 +83,4 @@ const PostView = () => {
   );
 };
 
-export default PostView;
+export default PostListItem;
