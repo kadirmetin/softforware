@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { FC } from "react";
 import { Container, Typography } from "@mui/material";
 import Image from "next/image";
@@ -8,8 +9,15 @@ interface PostViewProps {
   id: string;
 }
 
+interface Post {
+  Category: { name: string };
+  title: string;
+  image: string;
+  content: string;
+}
+
 export const PostView: FC<PostViewProps> = ({ id }) => {
-  const { data } = api.posts.getPost.useQuery({ postId: id });
+  const { data } = api.posts.getPost.useQuery<Post>({ postId: id });
 
   return (
     <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }}>
@@ -18,7 +26,7 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
       <Typography variant="h4">{data?.title}</Typography>
       <br />
       <Image
-        src={data?.image!}
+        src={data?.image}
         alt="photo"
         width={150}
         height={0}
