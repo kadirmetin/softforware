@@ -38,7 +38,7 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
       <Typography variant="h4">{data?.title}</Typography>
       <br />
       <Image
-        src={data?.image || "/logo.png"}
+        src={data?.image ?? "/logo.png"}
         alt="photo"
         width={150}
         height={0}
