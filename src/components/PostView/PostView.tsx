@@ -10,7 +10,14 @@ interface PostViewProps {
 }
 
 interface Post {
-  Category: { name: string };
+  Category: { id: string; name: string; postCount: number } | null;
+  author: {
+    id: string;
+    name: string | null;
+    email: string | null;
+    emailVerified: Date | null;
+    image: string | null;
+  };
   title: string;
   image: string;
   content: string;
