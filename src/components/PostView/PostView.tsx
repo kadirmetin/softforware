@@ -24,7 +24,7 @@ interface Post {
     name: string | null;
     email: string | null;
     emailVerified: Date | null;
-    image: string | null;
+    image: string;
   };
 }
 
@@ -38,7 +38,7 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
       <Typography variant="h4">{data?.title}</Typography>
       <br />
       <Image
-        src={data?.image}
+        src={data?.image || "/logo.png"}
         alt="photo"
         width={150}
         height={0}
