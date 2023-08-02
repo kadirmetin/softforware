@@ -19,9 +19,9 @@ const PostList = () => {
           image={post.image}
           title={post.title}
           createdAt={post.createdAt}
-          Category={post.Category || null}
+          Category={post.Category ?? null}
           author={{
-            name: post.author?.name || null,
+            name: post.author?.name ?? null,
           }}
         />
       ))}
