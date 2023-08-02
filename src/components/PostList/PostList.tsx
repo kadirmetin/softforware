@@ -19,7 +19,7 @@ const PostList = () => {
           image={post.image}
           title={post.title}
           createdAt={post.createdAt}
-          Category={post.Category}
+          Category={post.category}
           author={post.author}
         />
       ))}
