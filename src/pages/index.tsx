@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 
-import PostListItem from "~/components/PostListItem/PostListItem";
+import PostList from "~/components/PostList/PostList";
 import Carousel from "~/components/Carousel/Carousel";
 import SideBar from "~/components/SideBar/SideBar";
 
@@ -16,7 +16,7 @@ export default function Home() {
           backgroundColor: "secondary",
         }}
       >
-        <PostListItem />
+        <PostList />
         <SideBar />
       </Container>
     </>

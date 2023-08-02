@@ -29,7 +29,7 @@ export default function Carousel() {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
                 backgroundImage: `url(${post.image})`,
-                cursor: "pointer", // Optional: Show a pointer cursor on hover
+                cursor: "pointer",
               }}
             >
               <Box

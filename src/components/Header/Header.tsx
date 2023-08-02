@@ -24,7 +24,13 @@ function ResponsiveAppBar() {
           {/* WEBLOGO - START */}
           <Link href={"/"}>
             <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
-              <Image src="/logo.png" alt="logo" width={84} height={150}/>
+              <Image
+                src="/logo.png"
+                alt="logo"
+                width={84}
+                height={84}
+                priority
+              />
             </Box>
           </Link>
           {/* WEBLOGO - END */}

@@ -1,7 +1,9 @@
 import * as React from "react";
 import type { FC } from "react";
-import { Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 
 import { api } from "~/utils/api";
 
@@ -33,16 +35,38 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
 
   return (
     <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }}>
-      <Typography variant="subtitle2">{data?.Category?.name}</Typography>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
+          <CategoryOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
+          <Typography variant="inherit">{data?.Category.name}</Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
+          <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
+          <Typography variant="inherit">{data?.author.name}</Typography>
+        </Box>
+      </Box>
       <br />
       <Typography variant="h4">{data?.title}</Typography>
       <br />
       <Image
         src={data?.image ?? "/logo.png"}
         alt="photo"
-        width={150}
+        width={1200}
         height={0}
         style={{ width: "100%", height: "auto" }}
+        priority
       />
       <br />
       <Typography variant="inherit">{data?.content}</Typography>
