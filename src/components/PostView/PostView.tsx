@@ -44,7 +44,7 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
           }}
         >
           <CategoryOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
-          <Typography variant="inherit">{data?.Category.name}</Typography>
+          <Typography variant="inherit">{data?.Category?.name}</Typography>
         </Box>
         <Box
           sx={{
@@ -54,7 +54,7 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
           }}
         >
           <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
-          <Typography variant="inherit">{data?.author.name}</Typography>
+          <Typography variant="inherit">{data?.author?.name}</Typography>
         </Box>
       </Box>
       <br />
