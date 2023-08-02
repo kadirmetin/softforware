@@ -20,8 +20,8 @@ const PostList = () => {
           image={post.image}
           title={post.title}
           createdAt={post.createdAt}
-          Category={post.Category}
-          author={post.author}
+          Category={post.Category || null}
+          author={post.author || null}
         />
       ))}
     </Box>

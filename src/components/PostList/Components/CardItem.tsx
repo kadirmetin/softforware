@@ -21,10 +21,10 @@ interface CardItemProps {
   createdAt: Date;
   Category: {
     name: string;
-  };
+  } | null;
   author: {
     name: string;
-  };
+  } | null;
 }
 
 const CardItem: React.FC<CardItemProps> = ({
