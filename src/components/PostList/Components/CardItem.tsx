@@ -23,7 +23,7 @@ interface CardItemProps {
     name: string;
   } | null;
   author: {
-    name: string;
+    name: string | null;
   } | null;
 }
 

@@ -5,7 +5,6 @@ import CardItem from "./Components/CardItem";
 
 const PostList = () => {
   const { data } = api.posts.getAll.useQuery();
-  console.log(data);
 
   return (
     <Box
@@ -21,7 +20,9 @@ const PostList = () => {
           title={post.title}
           createdAt={post.createdAt}
           Category={post.Category || null}
-          author={post.author || null}
+          author={{
+            name: post.author?.name || null,
+          }}
         />
       ))}
     </Box>
