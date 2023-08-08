@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { Box, Container, Typography } from "@mui/material";
 
 import { api } from "~/utils/api";
-import CardItem from "~/components/PostList/Components/CardItem";
+import CardItem from "~/components/PostList/components/CardItem";
 import SideBar from "~/components/SideBar/SideBar";
 
 export default function Search() {

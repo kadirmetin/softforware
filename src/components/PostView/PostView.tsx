@@ -6,6 +6,7 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 
 import { api } from "~/utils/api";
+import { SkeletonPostView } from "./components/SkeletonPostView";
 
 interface PostViewProps {
   id: string;
@@ -31,45 +32,58 @@ interface Post {
 }
 
 export const PostView: FC<PostViewProps> = ({ id }) => {
-  const { data } = api.posts.getPost.useQuery<Post>({ postId: id });
+  const { data, isLoading } = api.posts.getPost.useQuery<Post>({ postId: id });
 
   return (
     <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }}>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-          }}
-        >
-          <CategoryOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
-          <Typography variant="inherit">{data?.Category?.name}</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-          }}
-        >
-          <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
-          <Typography variant="inherit">{data?.author?.name}</Typography>
-        </Box>
-      </Box>
-      <br />
-      <Typography variant="h4">{data?.title}</Typography>
-      <br />
-      <Image
-        src={data?.image ?? "/logo.png"}
-        alt="photo"
-        width={1200}
-        height={0}
-        style={{ width: "100%", height: "auto" }}
-        priority
-      />
-      <br />
-      <Typography variant="inherit">{data?.content}</Typography>
+      {isLoading ? (
+        <SkeletonPostView />
+      ) : (
+        <>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <CategoryOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
+              <Typography variant="inherit">{data?.Category?.name}</Typography>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
+              <Typography variant="inherit">{data?.author?.name}</Typography>
+            </Box>
+          </Box>
+          <br />
+          <Typography variant="h4">{data?.title}</Typography>
+          <br />
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              src={data?.image || ""}
+              alt="photo"
+              width={1200}
+              height={0}
+              priority
+            />
+          </Box>
+          <br />
+          <Typography variant="inherit">{data?.content}</Typography>
+        </>
+      )}
     </Container>
   );
 };

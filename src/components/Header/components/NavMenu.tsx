@@ -77,14 +77,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
         }}
       >
         <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="logo"
-            height={84}
-            width={84}
-            style={{ width: "auto", height: "100%" }}
-            priority
-          />
+          <Image src="/logo.png" alt="logo" height={84} width={84} priority />
         </Link>
       </Box>
       {/* MOBILELOGO - END */}

@@ -5,9 +5,10 @@ import { type AppType } from "next/app";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Layout from "~/pages/_layout";
+
+import { api } from "~/utils/api";
 
 const roboto = Roboto({
   subsets: ["latin"],
