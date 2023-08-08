@@ -14,7 +14,7 @@ import { api } from "~/utils/api";
 
 export default function Categories() {
   const { data, isLoading } = api.categories.getAll.useQuery();
-  const count = data?.length || 7;
+  const count = data?.length ?? 7;
 
   return (
     <>

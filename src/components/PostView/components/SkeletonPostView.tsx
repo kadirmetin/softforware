@@ -1,9 +1,6 @@
 import React from "react";
 import { Box, Skeleton } from "@mui/material";
 
-import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-
 export const SkeletonPostView = () => {
   return (
     <>

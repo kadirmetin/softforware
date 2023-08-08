@@ -2,12 +2,13 @@ import React from "react";
 import { Box } from "@mui/material";
 
 import { api } from "~/utils/api";
-import CardItem from "./components/CardItem";
+
 import SkeletonCardItem from "./components/SkeletonCardItem";
+import CardItem from "./components/CardItem";
 
 const PostList = () => {
   const { data, isLoading } = api.posts.getAll.useQuery();
-  const count = data?.length || 3;
+  const count = data?.length ?? 3;
 
   return (
     <Box sx={{ flex: 2 }}>

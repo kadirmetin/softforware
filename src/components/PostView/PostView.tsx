@@ -73,7 +73,7 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
             }}
           >
             <Image
-              src={data?.image || ""}
+              src={data?.image ?? ""}
               alt="photo"
               width={1200}
               height={0}
