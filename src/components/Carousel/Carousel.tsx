@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { api } from "~/utils/api";
 import getFormattedTimeElapsed from "~/utils/time";
-import SkeletonCarousel from "./Components/SkeletonCarousel";
+import SkeletonCarousel from "./components/SkeletonCarousel";
 
 export default function Carousel() {
   const { data, isLoading } = api.posts.take10Post.useQuery();
