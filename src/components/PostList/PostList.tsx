@@ -2,7 +2,6 @@ import React from "react";
 import { Box } from "@mui/material";
 
 import { api } from "~/utils/api";
-
 import SkeletonCardItem from "./components/SkeletonCardItem";
 import CardItem from "./components/CardItem";
 

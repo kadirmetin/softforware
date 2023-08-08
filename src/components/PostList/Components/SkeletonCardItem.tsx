@@ -8,13 +8,13 @@ import {
   Typography,
 } from "@mui/material";
 
-interface CardItemSkeletonProps {
+interface SkeletonCardItemProps {
   count?: number;
 }
 
-const CardItemSkeleton: React.FC<CardItemSkeletonProps> = ({
+const SkeletonCardItem: React.FC<SkeletonCardItemProps> = ({
   count = 1,
-}: CardItemSkeletonProps) => {
+}: SkeletonCardItemProps) => {
   const skeletons = Array.from({ length: count }, (_, index) => (
     <Grid item key={index}>
       <Card sx={{ display: "flex", height: 200, mt: 2, mb: 2 }}>
@@ -82,4 +82,4 @@ const CardItemSkeleton: React.FC<CardItemSkeletonProps> = ({
   return <>{skeletons}</>;
 };
 
-export default CardItemSkeleton;
+export default SkeletonCardItem;
