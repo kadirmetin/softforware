@@ -1,14 +1,14 @@
 import { type Session } from "next-auth";
 import { Roboto } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
-import { type AppType } from "next/app";
+import { AppProps, type AppType } from "next/app";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import "~/styles/globals.css";
-import Layout from "~/pages/_layout";
-
+import RootLayout from "./_layout";
 import { api } from "~/utils/api";
+import { NextPage } from "next";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -57,18 +57,31 @@ const theme = createTheme({
   },
 });
 
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: React.ReactElement) => React.ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
-}) => {
+}: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout;
+  if (getLayout) {
+    return getLayout(<Component {...pageProps} />);
+  }
+
   return (
     <SessionProvider session={session}>
       <main className={roboto.className}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout>
+          <RootLayout>
             <Component {...pageProps} />
-          </Layout>
+          </RootLayout>
         </ThemeProvider>
       </main>
     </SessionProvider>
