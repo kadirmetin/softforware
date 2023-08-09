@@ -41,12 +41,17 @@ export const SkeletonPostView = () => {
           <Skeleton variant="text" width={50} />
         </Box>
       </Box>
-      <br />
-      <Skeleton variant="text" width={300} />
-      <br />
-      <Skeleton variant="rectangular" width={1200} height={600} />
-      <br />
-      <Skeleton variant="text" width="100%" height={200} />
+      <Skeleton variant="text" width={300} height={75} />
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Skeleton variant="rectangular" width={"100%"} height={630} />
+      </Box>
+      <Skeleton variant="text" width="100%" height={50} />
     </>
   );
 };

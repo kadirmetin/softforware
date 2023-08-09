@@ -1,12 +1,13 @@
-import * as React from "react";
+import React from "react";
 import {
   Box,
   Button,
   IconButton,
-  Menu,
-  MenuItem,
-  Typography,
   Link,
+  List,
+  ListItemText,
+  ListItemButton,
+  SwipeableDrawer,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
@@ -16,57 +17,45 @@ interface NavMenuProps {
 }
 
 const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
   return (
     <>
-      <Box sx={{ display: { xs: "flex", md: "none" } }}>
+      <Box sx={{ display: { xs: "block", md: "none" } }}>
         <IconButton
           size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleOpenNavMenu}
+          aria-label="Open drawer"
+          onClick={toggleDrawer}
           color="inherit"
         >
           <MenuIcon />
         </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorElNav}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          open={Boolean(anchorElNav)}
-          onClose={handleCloseNavMenu}
-          sx={{
-            display: { xs: "block", md: "none" },
-          }}
-        >
-          {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">{page}</Typography>
-            </MenuItem>
-          ))}
-        </Menu>
       </Box>
 
-      {/* MOBILELOGO - START */}
+      <SwipeableDrawer
+        anchor="left"
+        open={isDrawerOpen}
+        onClose={toggleDrawer}
+        onOpen={toggleDrawer}
+        PaperProps={{
+          sx: {
+            width: "50%",
+          },
+        }}
+      >
+        <List>
+          {pages.map((page) => (
+            <ListItemButton key={page} onClick={toggleDrawer}>
+              <ListItemText primary={page} />
+            </ListItemButton>
+          ))}
+        </List>
+      </SwipeableDrawer>
+
       <Box
         sx={{
           display: { xs: "flex", md: "none" },
@@ -80,15 +69,10 @@ const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
           <Image src="/logo.png" alt="logo" height={84} width={84} priority />
         </Link>
       </Box>
-      {/* MOBILELOGO - END */}
 
       <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
         {pages.map((page) => (
-          <Button
-            key={page}
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: "white", display: "block" }}
-          >
+          <Button key={page} sx={{ my: 2, color: "white", display: "block" }}>
             {page}
           </Button>
         ))}
