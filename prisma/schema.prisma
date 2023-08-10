@@ -43,6 +43,7 @@ model User {
   sessions      Session[]
   Profile       Profile?
   Post          Post[]
+  role          Role      @default(USER)
 }
 
 model Profile {

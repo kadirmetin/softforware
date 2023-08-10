@@ -17,17 +17,18 @@ import { prisma } from "~/server/db";
  */
 declare module "next-auth" {
   interface Session extends DefaultSession {
-    user: DefaultSession["user"] & {
+    user: {
       id: string;
+      role: "ADMIN" | "USER";
       // ...other properties
       // role: UserRole;
-    };
+    } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    // ...other properties
+    role: "ADMIN" | "USER";
+  }
 }
 
 /**
@@ -35,16 +36,27 @@ declare module "next-auth" {
  *
  * @see https://next-auth.js.org/configuration/options
  */
+
 export const authOptions: NextAuthOptions = {
-  callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+  session: {
+    strategy: "jwt",
   },
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session.user && token.sub) {
+        session.user.id = token.sub;
+
+        const userWithRole = await prisma.user.findUnique({
+          where: { id: session.user.id },
+          select: { role: true },
+        });
+
+        session.user.role = userWithRole?.role ?? "USER";
+      }
+      return session;
+    },
+  },
+
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
