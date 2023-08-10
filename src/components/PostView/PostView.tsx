@@ -1,5 +1,6 @@
-import * as React from "react";
+import React from "react";
 import type { FC } from "react";
+import type Role from "~/types/Role";
 import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
@@ -12,7 +13,7 @@ interface PostViewProps {
   id: string;
 }
 
-interface Post {
+interface PostViewData {
   id: string;
   createdAt: Date;
   title: string;
@@ -25,14 +26,17 @@ interface Post {
   author: {
     id: string;
     name: string | null;
-    email: string | null;
+    email: string;
     emailVerified: Date | null;
     image: string;
+    role: Role;
   };
 }
 
 export const PostView: FC<PostViewProps> = ({ id }) => {
-  const { data, isLoading } = api.posts.getPost.useQuery<Post>({ postId: id });
+  const { data, isLoading } = api.posts.getPost.useQuery<PostViewData>({
+    postId: id,
+  });
 
   return (
     <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }}>

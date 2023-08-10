@@ -1,5 +1,5 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { type GetServerSidePropsContext } from "next";
+import type { GetServerSidePropsContext } from "next";
 import {
   getServerSession,
   type NextAuthOptions,
@@ -8,6 +8,7 @@ import {
 import GithubProvider from "next-auth/providers/github";
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
+import Role from "~/types/Role";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -20,13 +21,10 @@ declare module "next-auth" {
     user: {
       id: string;
       role: "ADMIN" | "USER";
-      // ...other properties
-      // role: UserRole;
     } & DefaultSession["user"];
   }
 
   interface User {
-    // ...other properties
     role: "ADMIN" | "USER";
   }
 }
@@ -51,7 +49,14 @@ export const authOptions: NextAuthOptions = {
           select: { role: true },
         });
 
-        session.user.role = userWithRole?.role ?? "USER";
+        const userRole = userWithRole?.role;
+
+        if (userRole === "ADMIN" || userRole === "USER") {
+          session.user.role = userRole;
+        } else {
+          console.error("Geçersiz kullanıcı rolü:", userRole);
+          session.user.role = "USER";
+        }
       }
       return session;
     },
