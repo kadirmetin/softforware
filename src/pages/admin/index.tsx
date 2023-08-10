@@ -1,9 +1,8 @@
-import AdminLayout from "./_layout";
+import { useSession } from "next-auth/react";
 
-export default function Page(): JSX.Element {
-  return <></>;
-}
-
-Page.getLayout = function getLayout(page: JSX.Element): JSX.Element {
-  return <AdminLayout>{page}</AdminLayout>;
+const Page = () => {
+  const { data: session } = useSession();
+  return <p>{session?.user.name}</p>;
 };
+
+export default Page;

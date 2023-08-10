@@ -13,7 +13,6 @@ export default function AdminLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {children}
-      <p>TEST</p>
     </>
   );
 }

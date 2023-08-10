@@ -1,14 +1,19 @@
-import { type Session } from "next-auth";
+import type { Session } from "next-auth";
+import type { AppType } from "next/app";
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
 import { Roboto } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
-import { AppProps, type AppType } from "next/app";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { useRouter } from "next/router";
+
+import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import RootLayout from "./_layout";
-import { api } from "~/utils/api";
-import { NextPage } from "next";
+import AdminLayout from "./admin/_layout";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -57,8 +62,8 @@ const theme = createTheme({
   },
 });
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: React.ReactElement) => React.ReactNode;
+export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -69,19 +74,18 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) => {
-  const getLayout = Component.getLayout;
-  if (getLayout) {
-    return getLayout(<Component {...pageProps} />);
-  }
+  const router = useRouter();
+  const getLayout = router.pathname.startsWith("/admin")
+    ? (page: React.ReactNode) => <AdminLayout>{page}</AdminLayout>
+    : (page: React.ReactNode) => <RootLayout>{page}</RootLayout>;
 
   return (
+    // eslint-disable-next-line
     <SessionProvider session={session}>
       <main className={roboto.className}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <RootLayout>
-            <Component {...pageProps} />
-          </RootLayout>
+          {getLayout(<Component {...pageProps} />)}
         </ThemeProvider>
       </main>
     </SessionProvider>

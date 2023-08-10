@@ -86,7 +86,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
             onOpen={toggleDrawer}
             PaperProps={{
               sx: {
-                width: "25%",
+                width: "50%",
                 overflow: "visible",
                 filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                 "& .MuiAvatar-root": {
