@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 const AdminPage: React.FC = () => {
   const { data: session } = useSession();
 
-  if (!session?.user ??  session.user.role !== "ADMIN") {
+  if (!session?.user || session.user.role !== "ADMIN") {
     return (
       <Box
         sx={{
@@ -15,7 +15,9 @@ const AdminPage: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <Typography variant="h6">Bu sayfaya erişim izniniz yok.</Typography>
+        <Box className="block items-center justify-center text-center">
+          <Typography variant="h6">Bu sayfaya erişim izniniz yok.</Typography>
+        </Box>
       </Box>
     );
   }

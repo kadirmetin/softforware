@@ -1,16 +1,19 @@
 import React from "react";
 import type { FC } from "react";
-import type Role from "~/types/Role";
 import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-
 import { api } from "~/utils/api";
 import { SkeletonPostView } from "./components/SkeletonPostView";
 
 interface PostViewProps {
   id: string;
+}
+
+enum Role {
+  ADMIN = "ADMIN",
+  USER = "USER",
 }
 
 interface PostViewData {
