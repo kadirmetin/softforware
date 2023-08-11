@@ -11,7 +11,7 @@ import NavMenu from "./components/NavMenu";
 import Search from "./components/Search";
 import UserMenu from "./components/UserMenu";
 
-const settings = ["Profile", "Account", "Dashboard"];
+const settings = ["Profile", "Account"];
 const pages = ["Products", "Pricing", "Blog"];
 
 function ResponsiveAppBar() {
