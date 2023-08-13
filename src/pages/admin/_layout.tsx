@@ -1,10 +1,35 @@
+import { Box, Typography } from "@mui/material";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
+
+import Footer from "~/components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { data: session } = useSession();
+
+  if (!session?.user || session.user.role !== "ADMIN") {
+    return (
+      <Box
+        sx={{
+          height: "100vh",
+          width: "auto",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box className="block items-center justify-center text-center">
+          <Typography variant="h6">Bu sayfaya erişim izniniz yok.</Typography>
+        </Box>
+      </Box>
+    );
+  }
   return (
     <>
       <Head>
@@ -12,7 +37,12 @@ export default function AdminLayout({
         <meta name="description" content="Blog for developers" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {children}
+      <Header />
+      <div className="flex">
+        <Sidebar />
+        {children}
+      </div>
+      <Footer />
     </>
   );
 }
