@@ -8,14 +8,14 @@ import { useRouter } from "next/router";
 const Header = () => {
   const router = useRouter();
 
-  const handleSignOut = async () => {
+  const handleSignOut = React.useCallback(async () => {
     try {
       await signOut({ redirect: false });
-      router.push("/");
+      void router.push("/");
     } catch (error) {
-      console.error("Oturum kapatılırken hata oluştu:", error);
+      console.error("Error logging out: ", error);
     }
-  };
+  }, [router]);
 
   return (
     <AppBar position="static">
@@ -38,7 +38,7 @@ const Header = () => {
             </Typography>
           </Box>
           <Box className="flex items-center justify-center">
-            <Button onClick={handleSignOut}>
+            <Button onClick={handleSignOut} aria-label="Sign Out">
               <LogoutIcon fontSize="small" className="mr-1 text-white" />
               <Typography variant="subtitle2" className="text-white">
                 Sign out
