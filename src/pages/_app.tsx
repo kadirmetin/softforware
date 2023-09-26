@@ -3,9 +3,10 @@ import type { AppType } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import type { Theme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
 
@@ -15,18 +16,16 @@ import "~/styles/globals.css";
 import RootLayout from "./_layout";
 import AdminLayout from "./admin/_layout";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  style: ["italic", "normal"],
 });
 
-const theme = createTheme({
+const theme: Theme = createTheme({
   palette: {
     mode: "dark",
   },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: inter.style.fontFamily,
   },
   components: {
     MuiCssBaseline: {
@@ -82,7 +81,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     // eslint-disable-next-line
     <SessionProvider session={session}>
-      <main className={roboto.className}>
+      <main className={inter.className}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           {getLayout(<Component {...pageProps} />)}

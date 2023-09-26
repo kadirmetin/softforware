@@ -30,4 +30,48 @@ export const postsRouter = createTRPCRouter({
         include: { Category: true, author: true },
       });
     }),
+
+  createPost: publicProcedure
+    .input(
+      z.object({
+        title: z.string(),
+        categoryId: z.string().optional(),
+        image: z.string(),
+        content: z.string(),
+        authorId: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { title, categoryId, image, content, authorId } = input;
+
+      const data: {
+        title: string;
+        image: string;
+        content: string;
+        author: { connect: { id: string } };
+        Category?: { connect: { id: string } };
+      } = {
+        title,
+        image,
+        content,
+        author: {
+          connect: {
+            id: authorId,
+          },
+        },
+      };
+
+      if (categoryId) {
+        data.Category = {
+          connect: {
+            id: categoryId,
+          },
+        };
+      }
+
+      return ctx.prisma.post.create({
+        data,
+        include: { Category: true, author: true },
+      });
+    }),
 });

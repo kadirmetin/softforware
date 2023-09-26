@@ -3,8 +3,8 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 
 import Footer from "~/components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
 
 export default function AdminLayout({
   children,
