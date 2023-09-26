@@ -13,7 +13,8 @@ SoftForWare, Next.js tabanlı modern, kullanıcı dostu ve özelleştirilebilir 
 
 3. Aşağıdaki komutu kullanarak projeyi klonlayın:
 
-		git clone https://github.com/kadirmetin/softforware.git
+`git clone https://github.com/kadirmetin/softforware.git`
+
 
 ### Bağımlılıkları Yükleme
 
