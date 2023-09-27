@@ -90,9 +90,9 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
           <br />
           <Box
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(data?.content || ""),
+              __html: DOMPurify.sanitize(data?.content ?? ""),
             }}
-          />{" "}
+          />
         </>
       )}
     </Container>

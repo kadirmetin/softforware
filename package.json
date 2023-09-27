@@ -37,6 +37,7 @@
     "@trpc/next": "^10.26.0",
     "@trpc/react-query": "^10.26.0",
     "@trpc/server": "^10.26.0",
+    "@types/dompurify": "^3.0.3",
     "@uploadthing/react": "^5.6.1",
     "dompurify": "^3.0.5",
     "next": "^13.4.2",
