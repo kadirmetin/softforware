@@ -11,7 +11,7 @@ export default function ImageUploader({
   return (
     <main className="mb-5 flex flex-col items-center justify-between">
       <UploadDropzone
-        className="ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 w-full bg-[#272727]"
+        className="ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 w-full rounded-lg border-2 border-dashed border-white bg-[#121212]"
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
           if (!res?.[0]?.url) {
@@ -21,10 +21,11 @@ export default function ImageUploader({
 
           const url = res[0].url;
           onUploadComplete(url);
+
           alert("Upload Completed");
         }}
         onUploadError={(error: Error) => {
-          console.log("Error: ", error);
+          console.log(error);
         }}
       />
     </main>

@@ -934,6 +934,11 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-paragraph/-/extension-paragraph-2.1.7.tgz"
   integrity sha512-cLqX27hNrXrwZCKrIW8OC3rW2+MT8hhS37+cdqOxZo5hUqQ9EF/puwS0w8uUZ7B3awX9Jm1QZDMjjERLkcmobw==
 
+"@tiptap/extension-placeholder@^2.1.11":
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-placeholder/-/extension-placeholder-2.1.11.tgz#ba115f714dd48d5bbc65df277b74f357ff3b100e"
+  integrity sha512-laHYRFxJWj6m72Yf1v6Q5nF2nvwWpQlKUj6Yu/yluOOoVE92HpLqCAvA8RamqLtPiw5VxR3v3oCY0WNeQRvyIg==
+
 "@tiptap/extension-strike@^2.1.7":
   version "2.1.7"
   resolved "https://registry.npmjs.org/@tiptap/extension-strike/-/extension-strike-2.1.7.tgz"
@@ -1228,12 +1233,12 @@
 
 "@uploadthing/mime-types@^0.2.1":
   version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@uploadthing/mime-types/-/mime-types-0.2.1.tgz#ee9daf91e30943a324d31f21a4b5ee9c7cd1076d"
+  resolved "https://registry.npmjs.org/@uploadthing/mime-types/-/mime-types-0.2.1.tgz"
   integrity sha512-UDySsPbdi7wp52WG7mp5CiZwaTvokDubqhm1xhFm73Bqhp0PsGbwSSF5PdCXH4fe8Y4EKGrMyWQ4i1fF9+DVVQ==
 
 "@uploadthing/react@^5.6.1":
   version "5.6.1"
-  resolved "https://registry.yarnpkg.com/@uploadthing/react/-/react-5.6.1.tgz#04f08a24e96b678ea2dc1622ab054f511ba2efc8"
+  resolved "https://registry.npmjs.org/@uploadthing/react/-/react-5.6.1.tgz"
   integrity sha512-uVd4I26OudpUcikobDFBMl9mG0vlhdXmK57oidCIrvfgNfKZOehpW+pqe1nUWE8HoYquJ1iK4OrmrfX8hOK2MA==
   dependencies:
     "@uploadthing/shared" "^5.2.2"
@@ -1243,7 +1248,7 @@
 
 "@uploadthing/shared@^5.2.2":
   version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@uploadthing/shared/-/shared-5.2.2.tgz#32a8c68af699cf73a09ede193a32cc0dedf17d2a"
+  resolved "https://registry.npmjs.org/@uploadthing/shared/-/shared-5.2.2.tgz"
   integrity sha512-OxNXcL91BSyKhZ+j0N5ekFRpCTwWsAf8B1FzL1YePTrNhMA0ZdlYqsObMAr7/jeWTc/mGaRRV1zUL4HBevnE3Q==
 
 acorn-jsx@^5.3.2:
@@ -1783,6 +1788,11 @@ dom-helpers@^5.0.1:
   dependencies:
     "@babel/runtime" "^7.8.7"
     csstype "^3.0.2"
+
+dompurify@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/dompurify/-/dompurify-3.0.5.tgz"
+  integrity sha512-F9e6wPGtY+8KNMRAVfxeCOHU0/NPWMSENNq4pQctuXRqqdEPW7q3CrLbR5Nse044WwacyjHGOMlvNsBe1y6z9A==
 
 electron-to-chromium@^1.4.477:
   version "1.4.506"
@@ -3487,15 +3497,6 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-dropzone@^14.2.3:
-  version "14.2.3"
-  resolved "https://registry.npmjs.org/react-dropzone/-/react-dropzone-14.2.3.tgz"
-  integrity sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==
-  dependencies:
-    attr-accept "^2.2.2"
-    file-selector "^0.6.0"
-    prop-types "^15.8.1"
-
 react-icons@^4.10.1:
   version "4.10.1"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.10.1.tgz"
@@ -3898,7 +3899,7 @@ tabbable@^6.0.1:
 
 tailwind-merge@^1.13.2:
   version "1.14.0"
-  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.14.0.tgz#e677f55d864edc6794562c63f5001f45093cdb8b"
+  resolved "https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-1.14.0.tgz"
   integrity sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==
 
 tailwindcss@^3.3.0:
@@ -4088,7 +4089,7 @@ update-browserslist-db@^1.0.11:
 
 uploadthing@^5.6.1:
   version "5.6.1"
-  resolved "https://registry.yarnpkg.com/uploadthing/-/uploadthing-5.6.1.tgz#3fb29dd3c12bc45885f17b274e5af17472808c19"
+  resolved "https://registry.npmjs.org/uploadthing/-/uploadthing-5.6.1.tgz"
   integrity sha512-lWVMCoAmZ33mahV6NS7oW+eQl++jnYEuaR3zh9PlrEt6P8lkl3GPDUE5iWywBx+pK9HewIqZvaZXQvzKOjOlMg==
   dependencies:
     "@uploadthing/mime-types" "^0.2.1"

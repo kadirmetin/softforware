@@ -1,10 +1,11 @@
 import { Link, RichTextEditor } from "@mantine/tiptap";
 import Highlight from "@tiptap/extension-highlight";
+import Placeholder from "@tiptap/extension-placeholder";
 import SubScript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
-import { EditorContent, useEditor } from "@tiptap/react";
+import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React, { useEffect } from "react";
 
@@ -22,8 +23,12 @@ const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
       SubScript,
       Highlight,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
+      Placeholder.configure({
+        placeholder:
+          "Welcome to Softforware!!! This is a test message for Tiptap Editor.",
+      }),
     ],
-    content: "<p>TEST</p>",
+    content: "",
     onUpdate: ({ editor }) => {
       onContentChange(editor.getHTML());
     },
@@ -36,7 +41,7 @@ const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
   }, [editor]);
 
   return (
-    <RichTextEditor editor={editor} className=" mb-2">
+    <RichTextEditor editor={editor} className="mb-3">
       <RichTextEditor.Toolbar sticky stickyOffset={60}>
         <RichTextEditor.ControlsGroup>
           <RichTextEditor.Bold />
@@ -77,10 +82,7 @@ const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
         </RichTextEditor.ControlsGroup>
       </RichTextEditor.Toolbar>
 
-      <EditorContent
-        editor={editor}
-        style={{ backgroundColor: "white", color: "black" }}
-      />
+      <RichTextEditor.Content />
     </RichTextEditor>
   );
 };

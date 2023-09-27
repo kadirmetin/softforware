@@ -9,6 +9,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
+import { MantineProvider } from "@mantine/core";
 
 import { api } from "~/utils/api";
 
@@ -82,10 +83,12 @@ const MyApp: AppType<{ session: Session | null }> = ({
     // eslint-disable-next-line
     <SessionProvider session={session}>
       <main className={inter.className}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {getLayout(<Component {...pageProps} />)}
-        </ThemeProvider>
+        <MantineProvider theme={{ colorScheme: "dark" }}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {getLayout(<Component {...pageProps} />)}
+          </ThemeProvider>
+        </MantineProvider>
       </main>
     </SessionProvider>
   );

@@ -1,4 +1,4 @@
-import { Button, Container } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import React, { useState } from "react";
@@ -55,6 +55,9 @@ const CreatePost: React.FC = () => {
         <title>Create Post | Softforware</title>
       </Head>
       <Container maxWidth="lg" className="pt-5">
+        <Typography variant="h4" className="mb-5">
+          Create Post
+        </Typography>
         <PostInfo
           onTitleChange={setTitle}
           onImageChange={setImage}

@@ -1,9 +1,9 @@
-import React from "react";
-import type { FC } from "react";
-import { Box, Container, Typography } from "@mui/material";
-import Image from "next/image";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import { Box, Container, Typography } from "@mui/material";
+import DOMPurify from "dompurify";
+import Image from "next/image";
+import type { FC } from "react";
 import { api } from "~/utils/api";
 import { SkeletonPostView } from "./components/SkeletonPostView";
 
@@ -88,7 +88,11 @@ export const PostView: FC<PostViewProps> = ({ id }) => {
             />
           </Box>
           <br />
-          <Typography variant="inherit">{data?.content}</Typography>
+          <Box
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(data?.content || ""),
+            }}
+          />{" "}
         </>
       )}
     </Container>
