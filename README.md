@@ -1,44 +1,45 @@
 # Softforware
 
-## SoftForWare Blog Platformu 
+### Description
+SoftForWare is a modern, user-friendly and customizable blogging platform based on Next.js. With SoftForWare, users can easily discover and share up-to-date information about software, technology and design.
 
-### Açıklama
-SoftForWare, Next.js tabanlı modern, kullanıcı dostu ve özelleştirilebilir bir blog platformudur. SoftForWare sayesinde kullanıcılar, yazılım, teknoloji ve tasarım hakkında güncel bilgileri kolayca keşfedebilir ve paylaşabilirler.
+#### How does it work?
+Clone #### Project
+1. If Git is not installed, download and install it from Git's official website.
 
-### Nasıl Çalışır?
-#### Projeyi Klonlama
-1. Git yüklü değilse, Git'in resmi web sitesinden indirin ve kurun.
+2. Open Terminal or Git Bash.
 
-2. Terminal veya Git Bash açın.
-
-3. Aşağıdaki komutu kullanarak projeyi klonlayın:
+3. Clone the project using the following command:
 
 `git clone https://github.com/kadirmetin/softforware.git`
 
 
-### Bağımlılıkları Yükleme
+#### Installing Dependencies
 
-Klonlama işlemi tamamlandıktan sonra, terminalde projenin bulunduğu klasöre gidin ve aşağıdaki komutu kullanarak bağımlılıkları yükleyin:
+Once the cloning process is complete, navigate to the folder where the project is located in the terminal and install the dependencies using the following command:
 
-	npm install
+`npm install`
 
-### Projeyi Çalıştırma
-Bağımlılıklar yüklendikten sonra, projeyi çalıştırmak için aşağıdaki komutu kullanın:
+### Running the Project
+Once the dependencies are installed, use the following command to run the project:
 
-	npm run dev
+`npm run dev`
 
-### Özellikler
+#### Features
 
-- **Modern Tasarım:** Next.js ve React.js kullanılarak geliştirilmiştir.
-- **SEO Dostu:** Arama motoru optimizasyonu için optimize edilmiştir.
-- **Performans Odaklı:** Hızlı yükleme süreleri ve düşük sunucu yanıt süreleri.
-- **Kullanıcı Dostu:** Kolay kullanım ve gezinme imkanı sunar.
+- Modern Design:** Developed using Next.js and React.js.
+- SEO Friendly:** Optimized for search engine optimization.
+- Performance Oriented:** Fast load times and low server response times.
+- User Friendly:** Easy to use and navigate.
 
-### Kullanılan Teknolojiler
+#### Technologies Used
 
+- TypeScript
 - Next.js
 - React.js
-- Node.js
-- CSS / SCSS
+- tRPC
+- Prisma
+- Tailwind CSS
+- NextAuth.js
 
-### Ekran Görüntüleri
+### Screenshots
