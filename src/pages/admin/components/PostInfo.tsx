@@ -11,6 +11,7 @@ import type { SelectChangeEvent } from "@mui/material/Select";
 
 import React, { useState } from "react";
 import { api } from "~/utils/api";
+import ImageUploader from "./ImageUploader";
 
 interface PostInfoProps {
   onTitleChange: (title: string) => void;
@@ -51,11 +52,9 @@ const PostInfo: React.FC<PostInfoProps> = ({
         </Box>
         <Box flex="3">
           <FormControl fullWidth margin="normal">
-            <InputLabel id="demo-simple-select-helper-label">
-              Category
-            </InputLabel>
+            <InputLabel id="category-label">Category</InputLabel>
             <Select
-              labelId="demo-simple-select-helper-label"
+              labelId="category-label"
               id="demo-simple-select-helper"
               value={selectedCategory}
               label="Category"
@@ -77,13 +76,7 @@ const PostInfo: React.FC<PostInfoProps> = ({
           </FormControl>
         </Box>
       </Box>
-      <TextField
-        fullWidth
-        margin="normal"
-        label="Image URL"
-        variant="outlined"
-        onChange={(e) => onImageChange(e.target.value)}
-      />
+      <ImageUploader onUploadComplete={onImageChange} />
     </>
   );
 };

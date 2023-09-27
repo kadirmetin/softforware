@@ -36,7 +36,11 @@ const Sidebar: React.FC = () => {
 
   return (
     <Collapse in={checked} orientation="horizontal" collapsedSize={70}>
-      <Box className={"h-full w-60 items-center bg-[#272727]"}>
+      <Box
+        className={
+          "h-full max-h-full min-h-screen w-60 items-center bg-[#272727]"
+        }
+      >
         <List>
           <ListItem
             disablePadding
