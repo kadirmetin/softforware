@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Header from "~/components/AdminHeader/AdminHeader";
+import Sidebar from "~/components/AdminSidebar/AdminSidebar";
 
 import Footer from "~/components/Footer/Footer";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
 
 export default function AdminLayout({
   children,

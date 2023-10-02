@@ -8,10 +8,9 @@ import {
   TextField,
 } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material/Select";
-
 import React, { useState } from "react";
 import { api } from "~/utils/api";
-import ImageUploader from "./ImageUploader";
+import ImageUploader from "../ImageUploader/ImageUploader";
 
 interface PostInfoProps {
   onTitleChange: (title: string) => void;

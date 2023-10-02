@@ -2,10 +2,10 @@ import { Button, Container, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import React, { useState } from "react";
+import AlertMessage from "~/components/AlertMessage/AlertMessage";
+import { Editor } from "~/components/Editor/Editor";
+import PostInfo from "~/components/PostInfo/PostInfo";
 import { api } from "~/utils/api";
-import { Editor } from "./components/Editor";
-import PostInfo from "./components/PostInfo";
-import AlertMessage from "./components/AlertMessage";
 
 const CreatePost: React.FC = () => {
   const { data: session } = useSession();
