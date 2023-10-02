@@ -77,7 +77,7 @@ export default function Carousel() {
                               {getFormattedTimeElapsed(post.createdAt)}
                             </Typography>
                           </Box>
-                          <Box sx={{ display: "flex", marginLeft: 3 }}>
+                          <Box sx={{ display: "flex", marginLeft: 1 }}>
                             <PersonIcon sx={{ mr: 0.5 }} />
                             <Typography>{post.author.name}</Typography>
                           </Box>

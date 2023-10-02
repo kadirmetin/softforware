@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { api } from "~/utils/api";
 import React, { memo } from "react";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import SideBar from "~/components/SideBar/SideBar";
 import CardItem from "~/components/PostList/components/CardItem";
 
@@ -21,7 +21,20 @@ const CategoryPosts = () => {
     categoryId,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "87vh",
+        }}
+      >
+        Loading...
+      </Typography>
+    );
+  }
   if (error) return <p>Something went wrong. Please try again later.</p>;
 
   return (

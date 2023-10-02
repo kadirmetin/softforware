@@ -59,6 +59,7 @@ export const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
     <div id="myQuillContainer">
       <ReactQuill
         value={value}
+        placeholder="Write something awesome..."
         onChange={handleChange}
         modules={modules}
         theme="snow"

@@ -9,7 +9,7 @@ import Search from "./components/Search";
 import UserMenu from "./components/UserMenu";
 
 const settings = ["Profile", "Account"];
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["İletişim", "Hakkımızda"];
 
 function ResponsiveAppBar() {
   const { data: session } = useSession();
