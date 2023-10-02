@@ -4,6 +4,7 @@ import { AppBar, Box, Button, Container, Typography } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Header = () => {
   const router = useRouter();
@@ -22,13 +23,15 @@ const Header = () => {
       <Container maxWidth="xl">
         <Box className="flex items-center justify-between">
           <Box className="flex items-center justify-center">
-            <Image
-              src={"/logo.png"}
-              width={84}
-              height={84}
-              alt="logo"
-              priority
-            />
+            <Link href="/admin">
+              <Image
+                src={"/logo.png"}
+                width={84}
+                height={84}
+                alt="logo"
+                priority
+              />
+            </Link>
             <Typography
               align="center"
               variant="subtitle2"

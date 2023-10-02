@@ -2,9 +2,8 @@ import { Button, Container, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import React, { useState } from "react";
-
 import { api } from "~/utils/api";
-import Editor from "./components/Editor";
+import { Editor } from "./components/Editor";
 import PostInfo from "./components/PostInfo";
 import AlertMessage from "./components/AlertMessage";
 
@@ -39,7 +38,7 @@ const CreatePost: React.FC = () => {
 
       setInterval(function () {
         window.location.reload();
-      }, 5000);
+      }, 3000);
     } catch (error) {
       console.error("Post creation failed:", error);
 
@@ -63,7 +62,7 @@ const CreatePost: React.FC = () => {
           onImageChange={setImage}
           onCategoryChange={setCategoryId}
         />
-        <Editor onContentChange={setContent} />
+        <Editor onContentChange={(content) => setContent(content)} />
         <Button
           variant="outlined"
           color="primary"

@@ -7,3 +7,8 @@ html {
   margin: 0;
   padding: 0;
 }
+
+#myQuillContainer {
+  font-family: "Inter", sans-serif;
+  margin-bottom: 1em;
+}

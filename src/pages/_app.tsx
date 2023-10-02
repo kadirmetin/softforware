@@ -9,11 +9,11 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useRouter } from "next/router";
-import { MantineProvider } from "@mantine/core";
 
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import "highlight.js/styles/tokyo-night-dark.css";
 import RootLayout from "./_layout";
 import AdminLayout from "./admin/_layout";
 
@@ -83,12 +83,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
     // eslint-disable-next-line
     <SessionProvider session={session}>
       <main className={inter.className}>
-        <MantineProvider theme={{ colorScheme: "dark" }}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {getLayout(<Component {...pageProps} />)}
-          </ThemeProvider>
-        </MantineProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {getLayout(<Component {...pageProps} />)}
+        </ThemeProvider>
       </main>
     </SessionProvider>
   );

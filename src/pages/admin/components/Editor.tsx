@@ -1,90 +1,69 @@
-import { Link, RichTextEditor } from "@mantine/tiptap";
-import Highlight from "@tiptap/extension-highlight";
-import Placeholder from "@tiptap/extension-placeholder";
-import SubScript from "@tiptap/extension-subscript";
-import Superscript from "@tiptap/extension-superscript";
-import TextAlign from "@tiptap/extension-text-align";
-import Underline from "@tiptap/extension-underline";
-import { useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import "highlight.js/styles/tokyo-night-dark.css";
+import hljs from "highlight.js";
+import "react-quill/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface EditorProps {
   onContentChange: (content: string) => void;
 }
 
-const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Underline,
-      Link,
-      Superscript,
-      SubScript,
-      Highlight,
-      TextAlign.configure({ types: ["heading", "paragraph"] }),
-      Placeholder.configure({
-        placeholder:
-          "Welcome to Softforware!!! This is a test message for Tiptap Editor.",
-      }),
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
     ],
-    content: "",
-    onUpdate: ({ editor }) => {
-      onContentChange(editor.getHTML());
-    },
-  });
-
-  useEffect(() => {
-    return () => {
-      if (editor) editor.destroy();
-    };
-  }, [editor]);
-
-  return (
-    <RichTextEditor editor={editor} className="mb-3">
-      <RichTextEditor.Toolbar sticky stickyOffset={60}>
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.Bold />
-          <RichTextEditor.Italic />
-          <RichTextEditor.Underline />
-          <RichTextEditor.Strikethrough />
-          <RichTextEditor.ClearFormatting />
-          <RichTextEditor.Highlight />
-          <RichTextEditor.Code />
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.H1 />
-          <RichTextEditor.H2 />
-          <RichTextEditor.H3 />
-          <RichTextEditor.H4 />
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.Blockquote />
-          <RichTextEditor.Hr />
-          <RichTextEditor.BulletList />
-          <RichTextEditor.OrderedList />
-          <RichTextEditor.Subscript />
-          <RichTextEditor.Superscript />
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.Link />
-          <RichTextEditor.Unlink />
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.AlignLeft />
-          <RichTextEditor.AlignCenter />
-          <RichTextEditor.AlignJustify />
-          <RichTextEditor.AlignRight />
-        </RichTextEditor.ControlsGroup>
-      </RichTextEditor.Toolbar>
-
-      <RichTextEditor.Content />
-    </RichTextEditor>
-  );
+    ["link"],
+    ["clean"],
+  ],
+  clipboard: {
+    matchVisual: false,
+  },
+  syntax: {
+    highlight: (text: string) => hljs.highlightAuto(text).value,
+  },
 };
 
-export default Editor;
+const formats = [
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "code-block",
+  "link",
+];
+
+export const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
+  const [value, setValue] = useState<string>("");
+
+  const handleChange = (content: string) => {
+    setValue(content);
+    onContentChange(content);
+  };
+
+  return (
+    <div id="myQuillContainer">
+      <ReactQuill
+        value={value}
+        onChange={handleChange}
+        modules={modules}
+        theme="snow"
+        formats={formats}
+      />
+    </div>
+  );
+};
