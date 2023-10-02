@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import Link from "next/link";
 
 import SkeletonCategories from "./components/SkeletonCategories";
 import { api } from "~/utils/api";
@@ -29,13 +30,19 @@ export default function Categories() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data?.map((categories) => (
+              {data?.map((category) => (
                 <TableRow
-                  key={categories.id}
+                  key={category.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {categories.name} {categories.postCount}
+                    <Link
+                      href={`/categories/${category.id}`}
+                      passHref
+                      className="hover:underline"
+                    >
+                      {category.name}
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}

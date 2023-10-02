@@ -17,6 +17,32 @@ export const postsRouter = createTRPCRouter({
     });
   }),
 
+  getByCategory: publicProcedure
+    .input(
+      z.object({
+        categoryId: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { categoryId } = input;
+
+      const category = await ctx.prisma.category.findUnique({
+        where: { id: categoryId },
+        include: {
+          posts: {
+            include: {
+              author: true,
+              Category: true,
+            },
+          },
+        },
+      });
+
+      if (!category) throw new Error("Category not found");
+
+      return category.posts;
+    }),
+
   getPost: publicProcedure
     .input(
       z.object({

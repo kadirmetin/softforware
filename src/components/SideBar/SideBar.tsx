@@ -1,5 +1,4 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-
 import Categories from "../Categories/Categories";
 
 const SideBar = () => {

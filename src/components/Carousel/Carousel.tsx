@@ -2,6 +2,7 @@ import React from "react";
 import MUICarousel from "react-material-ui-carousel";
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
 
 import { api } from "~/utils/api";
@@ -55,6 +56,8 @@ export default function Carousel() {
                           position: "relative",
                           p: { xs: 3, md: 6 },
                           pr: { md: 0 },
+                          display: "block",
+                          justifyContent: "space-between",
                         }}
                       >
                         <Typography
@@ -68,10 +71,16 @@ export default function Carousel() {
                         <Box
                           sx={{ display: "flex", justifyContent: "flex-start" }}
                         >
-                          <AccessTimeFilledIcon sx={{ mr: 0.5 }} />
-                          <Typography>
-                            {getFormattedTimeElapsed(post.createdAt)}
-                          </Typography>
+                          <Box sx={{ display: "flex" }}>
+                            <AccessTimeFilledIcon sx={{ mr: 0.5 }} />
+                            <Typography>
+                              {getFormattedTimeElapsed(post.createdAt)}
+                            </Typography>
+                          </Box>
+                          <Box sx={{ display: "flex", marginLeft: 3 }}>
+                            <PersonIcon sx={{ mr: 0.5 }} />
+                            <Typography>{post.author.name}</Typography>
+                          </Box>
                         </Box>
                       </Box>
                     </Grid>
