@@ -1,5 +1,3 @@
-<img src='public/logo.png' width='150'>
-
 # Softforware
 
 Softforware, yazılım hakkında bilgi almak, güncel teknolojileri takip etmek isteyenler için benzersiz bir buluşma noktasıdır. Bu platform, sektördeki en yeni trendleri, programlama dillerini, yazılım araçlarını ve teknolojilerini öğrenme arzusunda olan herkesi bir araya getirir. Deneyimli geliştiricilerden yeni başlayanlara, herkesin kendi bilgi ve deneyimlerini paylaşabileceği, birbirinden değerli içeriklerin oluşturulduğu bir blog alanı sunar.
