@@ -10,7 +10,18 @@ const CategoryPosts = () => {
   const { categoryId } = router.query;
 
   if (typeof categoryId !== "string") {
-    return <p>Loading or invalid category id...</p>;
+    return (
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "87vh",
+        }}
+      >
+        Loading or invalid category id...
+      </Typography>
+    );
   }
 
   const {
@@ -35,7 +46,19 @@ const CategoryPosts = () => {
       </Typography>
     );
   }
-  if (error) return <p>Something went wrong. Please try again later.</p>;
+  if (error)
+    return (
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "87vh",
+        }}
+      >
+        Something went wrong. Please try again later.
+      </Typography>
+    );
 
   return (
     <div>
@@ -67,7 +90,16 @@ const CategoryPosts = () => {
           <SideBar />
         </Container>
       ) : (
-        <p>No posts available.</p>
+        <Typography
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "87vh",
+          }}
+        >
+          No posts available.
+        </Typography>
       )}
     </div>
   );
