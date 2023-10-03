@@ -14,7 +14,11 @@ Softforware, sadece bir blog olmanın ötesinde, bir bilgi paylaşım ağı, bir
 
 ## Ekran Görüntüleri
 
-![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<p float="left" align="center">
+  <img src="https://github.com/kadirmetin/softforware/assets/82063998/ce98f2a6-9966-4c0d-8cc4-3df4804c0caf" width="225" />
+  <img src="https://github.com/kadirmetin/softforware/assets/82063998/c2c4335a-05f3-44fc-861c-243243ecaf1f" width="225" />
+  <img src="https://github.com/kadirmetin/softforware/assets/82063998/49cca8d9-a588-49e6-822f-4cc0f3d65217" width="225" />
+</p>
 
 ## Kurulum
 
