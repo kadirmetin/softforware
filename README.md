@@ -1,4 +1,4 @@
-<img src='public/logo.png' width='25'>
+<img src='public/logo.png' width='150'>
 
 # Softforware
 
