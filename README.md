@@ -1,4 +1,4 @@
-<img src="https://www.softforware.tech/logo.png" alt="logo" style="width:"100%", height:"200px";"/>
+<img src='public/logo' width='25'>
 
 # Softforware
 
