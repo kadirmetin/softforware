@@ -19,7 +19,7 @@ const CategoryPosts = () => {
           height: "87vh",
         }}
       >
-        Loading or invalid category id...
+        Yükleniyor...
       </Typography>
     );
   }
@@ -42,7 +42,7 @@ const CategoryPosts = () => {
           height: "87vh",
         }}
       >
-        Loading...
+        Yükleniyor...
       </Typography>
     );
   }
@@ -56,7 +56,7 @@ const CategoryPosts = () => {
           height: "87vh",
         }}
       >
-        Something went wrong. Please try again later.
+        Bir şeyler yanlış gitti. Lütfen daha sonra tekrar deneyin.
       </Typography>
     );
 
@@ -98,7 +98,7 @@ const CategoryPosts = () => {
             height: "87vh",
           }}
         >
-          No posts available.
+          Kategoriye ait herhangi bir yazı yok.
         </Typography>
       )}
     </div>

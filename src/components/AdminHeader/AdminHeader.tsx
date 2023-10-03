@@ -37,14 +37,14 @@ const Header = () => {
               variant="subtitle2"
               className="rounded-lg bg-slate-700 p-1 text-xs"
             >
-              Admin Panel - BETA
+              Admin Panel - v1.0
             </Typography>
           </Box>
           <Box className="flex items-center justify-center">
             <Button onClick={handleSignOut} aria-label="Sign Out">
               <LogoutIcon fontSize="small" className="mr-1 text-white" />
               <Typography variant="subtitle2" className="text-white">
-                Sign out
+                Çıkış Yap
               </Typography>
             </Button>
           </Box>

@@ -15,14 +15,16 @@ export default function ImageUploader({
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
           if (!res?.[0]?.url) {
-            console.error("Upload completed, but no URL received.");
+            console.error(
+              "Yükleme başarılı fakat URL alınırken bir hata oluştu!"
+            );
             return;
           }
 
           const url = res[0].url;
           onUploadComplete(url);
 
-          alert("Upload Completed");
+          alert("Yükleme başarılı!");
         }}
         onUploadError={(error: Error) => {
           console.log(error);

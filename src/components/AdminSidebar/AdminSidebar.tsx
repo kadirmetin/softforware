@@ -50,7 +50,7 @@ const Sidebar: React.FC = () => {
               <ListItemIcon>
                 <Dashboard />
               </ListItemIcon>
-              <ListItemText primary={"Dashboard"} />
+              <ListItemText primary={"Anasayfa"} />
             </ListItemButton>
           </ListItem>
           <ListItem
@@ -61,7 +61,7 @@ const Sidebar: React.FC = () => {
               <ListItemIcon>
                 <Create />
               </ListItemIcon>
-              <ListItemText primary={"Create Post"} />
+              <ListItemText primary={"Gönderi Oluştur"} />
             </ListItemButton>
           </ListItem>
         </List>

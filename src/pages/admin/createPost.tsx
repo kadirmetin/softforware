@@ -32,7 +32,7 @@ const CreatePost: React.FC = () => {
         categoryId,
       });
 
-      setSnackbarMessage("Post successfully created!");
+      setSnackbarMessage("Gönderi başarıyla oluşturuldu!");
       setSnackbarSeverity("success");
       setSnackbarOpen(true);
 
@@ -40,9 +40,9 @@ const CreatePost: React.FC = () => {
         window.location.reload();
       }, 3000);
     } catch (error) {
-      console.error("Post creation failed:", error);
+      console.error("Gönderi oluşturulurken bir hata oluştu:", error);
 
-      setSnackbarMessage("Error creating post!");
+      setSnackbarMessage("Gönderi oluşturulurken bir hata oluştu!");
       setSnackbarSeverity("error");
       setSnackbarOpen(true);
     }
@@ -51,11 +51,11 @@ const CreatePost: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Create Post | Softforware</title>
+        <title>Gönderi Oluştur | Softforware</title>
       </Head>
       <Container maxWidth="lg" className="pt-5">
         <Typography variant="h4" className="mb-5">
-          Create Post
+          Gönderi Oluştur
         </Typography>
         <PostInfo
           onTitleChange={setTitle}
@@ -69,7 +69,7 @@ const CreatePost: React.FC = () => {
           onClick={handleSubmit}
           className="mb-5"
         >
-          Submit
+          Gönder
         </Button>
       </Container>
       <AlertMessage

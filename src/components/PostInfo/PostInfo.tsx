@@ -44,14 +44,14 @@ const PostInfo: React.FC<PostInfoProps> = ({
           <TextField
             fullWidth
             margin="normal"
-            label="Title"
+            label="Başlık"
             variant="outlined"
             onChange={(e) => onTitleChange(e.target.value)}
           />
         </Box>
         <Box flex="3">
           <FormControl fullWidth margin="normal">
-            <InputLabel id="category-label">Category</InputLabel>
+            <InputLabel id="category-label">Kategori</InputLabel>
             <Select
               labelId="category-label"
               id="demo-simple-select-helper"

@@ -8,7 +8,7 @@ import NavMenu from "./components/NavMenu";
 import Search from "./components/Search";
 import UserMenu from "./components/UserMenu";
 
-const settings = ["Profile", "Account"];
+const settings = ["Profil", "Hesap Ayarları"];
 const pages = ["İletişim", "Hakkımızda"];
 
 function ResponsiveAppBar() {

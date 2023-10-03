@@ -73,7 +73,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
         <>
           {isLargeScreen ? (
             <>
-              <Tooltip title="Open settings">
+              <Tooltip title="Seçenekler">
                 <IconButton onClick={handleClick} sx={{ p: 0 }}>
                   <Avatar alt="profile pic" src={session.user.image!} />
                 </IconButton>
@@ -89,7 +89,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
               >
                 {session?.user.role === "ADMIN" && (
                   <MenuItem onClick={goDashboard}>
-                    <Typography textAlign="center">Dashboard</Typography>
+                    <Typography textAlign="center">Admin Paneli</Typography>
                   </MenuItem>
                 )}
                 {settings.map((setting) => (
@@ -97,12 +97,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}
-                <MenuItem onClick={() => signOut()}>Sign out</MenuItem>
+                <MenuItem onClick={() => signOut()}>Çıkış Yap</MenuItem>
               </Menu>
             </>
           ) : (
             <>
-              <Tooltip title="Open settings">
+              <Tooltip title="Seçenekler">
                 <IconButton onClick={toggleDrawer("right", true)} sx={{ p: 0 }}>
                   <Avatar alt="profile pic" src={session.user.image!} />
                 </IconButton>
@@ -131,7 +131,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
                     <ListItemIcon>
                       <Avatar alt="profile pic" src={session.user.image!} />
                     </ListItemIcon>
-                    <ListItemText>Profile</ListItemText>
+                    <ListItemText>Profil</ListItemText>
                   </MenuItem>
                   <Divider />
                   {session?.user.role === "ADMIN" && (
@@ -139,14 +139,14 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
                       <ListItemIcon>
                         <AdminPanelSettingsIcon fontSize="medium" />
                       </ListItemIcon>
-                      <ListItemText>Dashboard</ListItemText>
+                      <ListItemText>Admin Paneli</ListItemText>
                     </MenuItem>
                   )}
                   <MenuItem>
                     <ListItemIcon>
                       <SettingsIcon fontSize="medium" />
                     </ListItemIcon>
-                    <ListItemText>Settings</ListItemText>
+                    <ListItemText>Ayarlar</ListItemText>
                   </MenuItem>
                   <MenuItem
                     onClick={async () => {
@@ -156,7 +156,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
                     <ListItemIcon>
                       <ExitToAppIcon fontSize="medium" />
                     </ListItemIcon>
-                    <ListItemText>Sign out</ListItemText>
+                    <ListItemText>Çıkış Yap</ListItemText>
                   </MenuItem>
                 </MenuList>
               </SwipeableDrawer>
@@ -164,7 +164,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ session, settings }) => {
           )}
         </>
       ) : (
-        <Tooltip title="Sign In">
+        <Tooltip title="Giriş Yap">
           <IconButton onClick={() => signIn()} sx={{ p: 0 }}>
             <Avatar />
           </IconButton>
