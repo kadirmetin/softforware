@@ -10,7 +10,7 @@ Softforware also features expert writers whose mission is to exchange knowledge 
 
 Softforware is more than just a blog, it aims to be an information sharing network, a learning community and a platform where you can find everything about technology that will carry you into the future. We invite everyone who wants to discover, learn and share innovations, knowledge and experiences in the world of technology to join this exciting journey with Softforware.
 
-[Softforware official website](https://www.softforware.tech/)
+[Softforware official website](https://www.softforware.com/)
 
 ## Screenshots
 
@@ -22,7 +22,7 @@ Softforware is more than just a blog, it aims to be an information sharing netwo
 
 ## Installation
 
-To use Softforware, you first need to register [here](https://www.softforware.tech/). Once registered, you can create your profile, share your projects, connect with other developers and enjoy the benefits the platform offers.
+To use Softforware, you first need to register [here](https://www.softforware.com/). Once registered, you can create your profile, share your projects, connect with other developers and enjoy the benefits the platform offers.
 
 ## Usage
 
@@ -66,7 +66,7 @@ Softforware is developed using the following technologies or tools:
 
 ## Support
 
-For support, email kadirmetin@softforware.tech or join our Discord channel.
+For support, email kadirmetin@softforware.com or join our Discord channel.
 
 ## License
 
