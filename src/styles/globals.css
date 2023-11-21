@@ -12,3 +12,12 @@ html {
   font-family: "Inter", sans-serif;
   margin-bottom: 1em;
 }
+
+.quill .ql-container.ql-snow {
+  height: auto;
+}
+
+.quill .ql-editor {
+  height: 300px;
+  overflow-y: scroll;
+}

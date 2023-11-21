@@ -37,7 +37,7 @@ const Header = () => {
               variant="subtitle2"
               className="rounded-lg bg-slate-700 p-1 text-xs"
             >
-              Admin Panel - v1.0
+              Admin Panel - v1.1 :)
             </Typography>
           </Box>
           <Box className="flex items-center justify-center">

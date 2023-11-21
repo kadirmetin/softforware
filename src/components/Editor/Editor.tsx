@@ -14,6 +14,7 @@ const modules = {
   toolbar: [
     [{ header: [1, 2, 3, false] }],
     ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
+    [{ color: [] }, { background: [] }],
     [
       { list: "ordered" },
       { list: "bullet" },
@@ -23,6 +24,7 @@ const modules = {
     ["link"],
     ["clean"],
   ],
+
   clipboard: {
     matchVisual: false,
   },
@@ -40,10 +42,12 @@ const formats = [
   "underline",
   "strike",
   "blockquote",
+  "code-block",
+  "color",
+  "background",
   "list",
   "bullet",
   "indent",
-  "code-block",
   "link",
 ];
 
