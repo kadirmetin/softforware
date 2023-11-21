@@ -1,7 +1,7 @@
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { Box, Container, Typography, styled } from "@mui/material";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import type { FC } from "react";
 import { api } from "~/utils/api";
