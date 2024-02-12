@@ -6,6 +6,7 @@ const config = {
   },
   plugins: ["@typescript-eslint"],
   extends: [
+    "next",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
@@ -22,11 +23,13 @@ const config = {
     "@typescript-eslint/no-misused-promises": [
       2,
       {
-        "checksVoidReturn": {
-          "attributes": false
-        }
+        checksVoidReturn: {
+          attributes: false,
+        },
       },
     ],
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
   },
 };
 
