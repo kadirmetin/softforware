@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import { AppBar, Box, Button, Container, Typography } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { AppBar, Box, Button, Container, Typography } from "@mui/material";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/router";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
 
 const Header = () => {
   const router = useRouter();
@@ -37,7 +37,7 @@ const Header = () => {
               variant="subtitle2"
               className="rounded-lg bg-slate-700 p-1 text-xs"
             >
-              Admin Panel - v1.1 :)
+              Admin Panel - v1.1
             </Typography>
           </Box>
           <Box className="flex items-center justify-center">
