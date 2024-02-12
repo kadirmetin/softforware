@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 import React from "react";
@@ -19,9 +19,8 @@ export default function RootLayout({
       </Head>
       <Header />
       {children}
-      <GoogleAnalytics
-        gaId={`${process.env.NEXT_PUBLIC_ANALYTICS_MEASUREMENT_ID}`}
-      />
+      <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAG}`} />
+      <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_ANALYTICS_ID}`} />
       <Analytics />
       <Footer />
     </>
