@@ -51,7 +51,7 @@ const CreatePost: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Gönderi Oluştur | Softforware</title>
+        <title>Gönderi Oluştur | Softforware Blog</title>
       </Head>
       <Container maxWidth="lg" className="pt-5">
         <Typography variant="h4" className="mb-5">

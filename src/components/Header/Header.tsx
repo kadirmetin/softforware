@@ -1,15 +1,26 @@
-import React from "react";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
-import Image from "next/image";
 import { AppBar, Box, Container, Toolbar } from "@mui/material";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
 
 import NavMenu from "./components/NavMenu";
 import Search from "./components/Search";
 import UserMenu from "./components/UserMenu";
 
 const settings = ["Profil", "Hesap Ayarları"];
-const pages = ["İletişim", "Hakkımızda"];
+
+const pages = [
+  {
+    id: 1,
+    title: "İletişim",
+    url: "https://www.softforware.com/#container5",
+  },
+  {
+    id: 2,
+    title: "Hakkımızda",
+    url: "https://www.softforware.com/",
+  },
+];
 
 function ResponsiveAppBar() {
   const { data: session } = useSession();
@@ -18,7 +29,6 @@ function ResponsiveAppBar() {
     <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* WEBLOGO - START */}
           <Link href={"/"}>
             <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
               <Image
@@ -30,19 +40,12 @@ function ResponsiveAppBar() {
               />
             </Box>
           </Link>
-          {/* WEBLOGO - END */}
 
-          {/* NAVMENU - START */}
           <NavMenu pages={pages} />
-          {/* NAVMENU - END */}
 
-          {/* SEARCH - START */}
           <Search />
-          {/* SEARCH - END */}
 
-          {/* USERMENU - START */}
           <UserMenu session={session} settings={settings} />
-          {/* USERMENU - END */}
         </Toolbar>
       </Container>
     </AppBar>

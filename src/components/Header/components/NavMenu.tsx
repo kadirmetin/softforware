@@ -1,19 +1,25 @@
-import React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   Box,
   Button,
   IconButton,
   Link,
   List,
-  ListItemText,
   ListItemButton,
+  ListItemText,
   SwipeableDrawer,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
+import React from "react";
+
+interface Page {
+  id: number;
+  title: string;
+  url: string;
+}
 
 interface NavMenuProps {
-  pages: string[];
+  pages: Page[];
 }
 
 const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
@@ -56,8 +62,12 @@ const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
       >
         <List>
           {pages.map((page) => (
-            <ListItemButton key={page} onClick={toggleDrawer}>
-              <ListItemText primary={page} />
+            <ListItemButton
+              key={page.id}
+              onClick={toggleDrawer}
+              href={page.url}
+            >
+              <ListItemText primary={page.title} />
             </ListItemButton>
           ))}
         </List>
@@ -79,8 +89,12 @@ const NavMenu: React.FC<NavMenuProps> = ({ pages }) => {
 
       <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
         {pages.map((page) => (
-          <Button key={page} sx={{ my: 2, color: "white", display: "block" }}>
-            {page}
+          <Button
+            key={page.id}
+            sx={{ my: 2, color: "white", display: "block" }}
+            href={page.url}
+          >
+            {page.title}
           </Button>
         ))}
       </Box>

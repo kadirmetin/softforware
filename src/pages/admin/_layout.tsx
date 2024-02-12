@@ -33,7 +33,7 @@ export default function AdminLayout({
   return (
     <>
       <Head>
-        <title>Dashboard | Softforware</title>
+        <title>Dashboard | Softforware Blog</title>
         <meta name="description" content="Blog for developers" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
