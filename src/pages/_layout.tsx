@@ -19,8 +19,8 @@ export default function RootLayout({
       </Head>
       <Header />
       {children}
-      <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAG}`} />
-      <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_ANALYTICS_ID}`} />
+      <GoogleTagManager gtmId={`${process.env.GOOGLE_TAG}`} />
+      <GoogleAnalytics gaId={`${process.env.ANALYTICS_ID}`} />
       <Analytics />
       <Footer />
     </>
