@@ -8,12 +8,12 @@ const Post: React.FC = () => {
   const router = useRouter();
   const { postId } = router.query;
   const { data, isLoading } = api.posts.getPost.useQuery({
-    postId: postId?.toString() || "",
+    postId: postId?.toString() ?? "",
   });
 
   if (!isLoading) {
     if (!data) {
-      router.push("/404");
+      router.push("/404").catch((err) => console.log(err));
     } else {
       return <PostView data={data} />;
     }
