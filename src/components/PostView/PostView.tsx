@@ -4,7 +4,9 @@ import { Box, Container, Typography, styled } from "@mui/material";
 import DOMPurify from "isomorphic-dompurify";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import type { FC } from "react";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 interface PostViewProps {
   data: {
@@ -13,9 +15,11 @@ interface PostViewProps {
     content: string;
     image: string;
     Category: {
+      id: string;
       name: string;
     } | null;
     author: {
+      id: string;
       name: string | null;
     };
   };
@@ -94,7 +98,19 @@ export const PostView: FC<PostViewProps> = ({ data }) => {
               }}
             >
               <CategoryOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
-              <Typography variant="inherit">{data?.Category?.name}</Typography>
+              <Link href={`/categories/${data?.Category?.id}`} passHref>
+                <Typography
+                  variant="inherit"
+                  sx={{
+                    ":hover": {
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                    },
+                  }}
+                >
+                  {data?.Category?.name}
+                </Typography>
+              </Link>
             </Box>
             <Box
               sx={{
@@ -104,7 +120,19 @@ export const PostView: FC<PostViewProps> = ({ data }) => {
               }}
             >
               <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
-              <Typography variant="inherit">{data?.author?.name}</Typography>
+              <Link href={`/profile/${data?.author?.id}`} passHref>
+                <Typography
+                  variant="inherit"
+                  sx={{
+                    ":hover": {
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                    },
+                  }}
+                >
+                  {data?.author?.name}
+                </Typography>
+              </Link>
             </Box>
           </Box>
           <br />
@@ -141,6 +169,7 @@ export const PostView: FC<PostViewProps> = ({ data }) => {
           </div>
         </>
       </Container>
+      <ScrollToTop />
     </>
   );
 };

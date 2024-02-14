@@ -1,4 +1,6 @@
-import React from "react";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import {
   Box,
   Card,
@@ -8,10 +10,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
-import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-
+import React from "react";
 import getFormattedTimeElapsed from "~/utils/time";
 
 interface CardItemProps {
@@ -25,6 +24,7 @@ interface CardItemProps {
   author: {
     name: string | null;
   } | null;
+  isProfile?: boolean;
 }
 
 const CardItem: React.FC<CardItemProps> = ({
@@ -34,9 +34,8 @@ const CardItem: React.FC<CardItemProps> = ({
   createdAt,
   Category,
   author,
-}: CardItemProps) => {
-  //TODO: Graphic Design is my Passion
-
+  isProfile = false,
+}) => {
   return (
     <Grid item key={id}>
       <CardActionArea component="a" href={`/post/${id}`}>
@@ -81,10 +80,14 @@ const CardItem: React.FC<CardItemProps> = ({
               >
                 {Category?.name}
               </Typography>
-              <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
-              <Typography variant="subtitle1" color="text.secondary">
-                {author?.name}
-              </Typography>
+              {isProfile ? null : (
+                <>
+                  <PermIdentityOutlinedIcon sx={{ mr: 0.5, fontSize: 24 }} />
+                  <Typography variant="subtitle1" color="text.secondary">
+                    {author?.name}
+                  </Typography>
+                </>
+              )}
             </Box>
           </CardContent>
         </Card>

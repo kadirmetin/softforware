@@ -1,19 +1,17 @@
-import type { Session } from "next-auth";
-import type { AppType } from "next/app";
-import type { ReactElement, ReactNode } from "react";
-import type { NextPage } from "next";
-import type { AppProps } from "next/app";
-import { Inter } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import type { Theme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useRouter } from "next/router";
-
-import { api } from "~/utils/api";
-
-import "~/styles/globals.css";
+import type { Theme } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "highlight.js/styles/tokyo-night-dark.css";
+import { SnackbarProvider } from "material-ui-snackbar-provider";
+import type { NextPage } from "next";
+import type { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+import type { AppProps, AppType } from "next/app";
+import { Inter } from "next/font/google";
+import { useRouter } from "next/router";
+import type { ReactElement, ReactNode } from "react";
+import "~/styles/globals.css";
+import { api } from "~/utils/api";
 import RootLayout from "./_layout";
 import AdminLayout from "./admin/_layout";
 
@@ -85,7 +83,24 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <main className={inter.className}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {getLayout(<Component {...pageProps} />)}
+          <SnackbarProvider
+            SnackbarProps={{
+              autoHideDuration: 4000,
+              key: "bottom" + "right",
+              anchorOrigin: {
+                vertical: "bottom",
+                horizontal: "right",
+              },
+              sx: {
+                "& .MuiSnackbarContent-root": {
+                  backgroundColor: "#2b2b2b",
+                  color: "#ffffff",
+                },
+              },
+            }}
+          >
+            {getLayout(<Component {...pageProps} />)}
+          </SnackbarProvider>
         </ThemeProvider>
       </main>
     </SessionProvider>

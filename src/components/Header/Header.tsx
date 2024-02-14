@@ -7,8 +7,6 @@ import NavMenu from "./components/NavMenu";
 import Search from "./components/Search";
 import UserMenu from "./components/UserMenu";
 
-const settings = ["Profil", "Hesap Ayarları"];
-
 const pages = [
   {
     id: 1,
@@ -45,7 +43,7 @@ function ResponsiveAppBar() {
 
           <Search />
 
-          <UserMenu session={session} settings={settings} />
+          <UserMenu session={session} />
         </Toolbar>
       </Container>
     </AppBar>

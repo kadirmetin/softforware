@@ -1,35 +1,20 @@
-import { useRouter } from "next/router";
-import { api } from "~/utils/api";
-import React, { memo } from "react";
 import { Box, Container, Typography } from "@mui/material";
-import SideBar from "~/components/SideBar/SideBar";
+import { useRouter } from "next/router";
+import { memo } from "react";
 import CardItem from "~/components/PostList/components/CardItem";
+import SideBar from "~/components/SideBar/SideBar";
+import { api } from "~/utils/api";
 
 const CategoryPosts = () => {
   const router = useRouter();
   const { categoryId } = router.query;
-
-  if (typeof categoryId !== "string") {
-    return (
-      <Typography
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "87vh",
-        }}
-      >
-        Yükleniyor...
-      </Typography>
-    );
-  }
 
   const {
     data: posts,
     isLoading,
     error,
   } = api.posts.getByCategory.useQuery({
-    categoryId,
+    categoryId: categoryId?.toString() ?? "",
   });
 
   if (isLoading) {
@@ -46,6 +31,7 @@ const CategoryPosts = () => {
       </Typography>
     );
   }
+
   if (error)
     return (
       <Typography

@@ -8,6 +8,10 @@ html {
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 #myQuillContainer {
   font-family: "Inter", sans-serif;
   margin-bottom: 1em;

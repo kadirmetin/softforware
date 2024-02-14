@@ -47,9 +47,14 @@ model User {
 }
 
 model Profile {
-  id   String @id @default(cuid()) @map("_id")
-  bio  String
-  user User   @relation(fields: [userId], references: [id])
+  id       String  @id @default(cuid()) @map("_id")
+  bio      String?
+  website  String?
+  linkedin String?
+  github   String?
+  kaggle   String?
+  twitter  String?
+  user     User    @relation(fields: [userId], references: [id])
 
   userId String @unique
 }
