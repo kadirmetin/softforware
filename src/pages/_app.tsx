@@ -3,6 +3,7 @@ import type { Theme } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "highlight.js/styles/tokyo-night-dark.css";
 import { SnackbarProvider } from "material-ui-snackbar-provider";
+import ModalProvider from "mui-modal-provider";
 import type { NextPage } from "next";
 import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
@@ -99,7 +100,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
               },
             }}
           >
-            {getLayout(<Component {...pageProps} />)}
+            <ModalProvider>
+              {getLayout(<Component {...pageProps} />)}
+            </ModalProvider>
           </SnackbarProvider>
         </ThemeProvider>
       </main>

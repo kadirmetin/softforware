@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-import "highlight.js/styles/tokyo-night-dark.css";
 import hljs from "highlight.js";
+import "highlight.js/styles/tokyo-night-dark.css";
+import dynamic from "next/dynamic";
+import React, { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface EditorProps {
   onContentChange: (content: string) => void;
+  initialContent?: string;
+  loading?: boolean;
 }
 
 const modules = {
@@ -51,8 +53,18 @@ const formats = [
   "link",
 ];
 
-export const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
+export const Editor: React.FC<EditorProps> = ({
+  onContentChange,
+  initialContent,
+  loading,
+}) => {
   const [value, setValue] = useState<string>("");
+
+  useEffect(() => {
+    if (initialContent) {
+      setValue(initialContent);
+    }
+  }, [initialContent]);
 
   const handleChange = (content: string) => {
     setValue(content);
@@ -68,6 +80,7 @@ export const Editor: React.FC<EditorProps> = ({ onContentChange }) => {
         modules={modules}
         theme="snow"
         formats={formats}
+        readOnly={loading}
       />
     </div>
   );

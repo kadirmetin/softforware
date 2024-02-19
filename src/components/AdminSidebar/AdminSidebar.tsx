@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import {
+  Add as AddIcon,
+  ChevronLeft,
+  ChevronRight,
+  Dashboard,
+} from "@mui/icons-material";
+import ListIcon from "@mui/icons-material/List";
 import {
   Box,
   Collapse,
@@ -9,13 +15,8 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import {
-  Dashboard,
-  ChevronLeft,
-  ChevronRight,
-  Create,
-} from "@mui/icons-material";
 import { useRouter } from "next/router";
+import React, { useState } from "react";
 
 const Sidebar: React.FC = () => {
   const [checked, setChecked] = useState(false);
@@ -59,9 +60,20 @@ const Sidebar: React.FC = () => {
           >
             <ListItemButton>
               <ListItemIcon>
-                <Create />
+                <AddIcon />
               </ListItemIcon>
               <ListItemText primary={"Gönderi Oluştur"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            onClick={() => handleListItemClick("/admin/listPosts")}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <ListIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Gönderileri Listele"} />
             </ListItemButton>
           </ListItem>
         </List>

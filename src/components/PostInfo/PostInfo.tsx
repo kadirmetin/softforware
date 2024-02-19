@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import type { SelectChangeEvent } from "@mui/material/Select";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { api } from "~/utils/api";
 import ImageUploader from "../ImageUploader/ImageUploader";
 
@@ -16,14 +16,25 @@ interface PostInfoProps {
   onTitleChange: (title: string) => void;
   onImageChange: (image: string) => void;
   onCategoryChange: (categoryId: string) => void;
+  initialTitle?: string;
+  initialImage?: string;
+  initialCategoryId?: string;
+  loading?: boolean;
 }
 
 const PostInfo: React.FC<PostInfoProps> = ({
   onTitleChange,
   onImageChange,
   onCategoryChange,
+  initialTitle = "",
+  initialImage = "",
+  initialCategoryId = "",
+  loading,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    initialCategoryId || ""
+  );
+  const [text, setText] = useState<string>(initialTitle || "");
 
   const { data, isLoading } = api.categories.getAll.useQuery();
 
@@ -31,6 +42,17 @@ const PostInfo: React.FC<PostInfoProps> = ({
     const value = event.target.value;
     setSelectedCategory(value);
     onCategoryChange(value);
+  };
+
+  useEffect(() => {
+    // props'tan gelen değerler değiştiğinde state'i güncelle
+    setSelectedCategory(initialCategoryId || "");
+    setText(initialTitle || "");
+  }, [initialCategoryId, initialTitle]);
+
+  const handleTitleChange = (text: string) => {
+    setText(text);
+    onTitleChange(text);
   };
 
   return (
@@ -46,7 +68,9 @@ const PostInfo: React.FC<PostInfoProps> = ({
             margin="normal"
             label="Başlık"
             variant="outlined"
-            onChange={(e) => onTitleChange(e.target.value)}
+            onChange={(e) => handleTitleChange(e.target.value)}
+            value={text}
+            disabled={loading}
           />
         </Box>
         <Box flex="3">
@@ -57,7 +81,7 @@ const PostInfo: React.FC<PostInfoProps> = ({
               id="demo-simple-select-helper"
               value={selectedCategory}
               label="Category"
-              disabled={isLoading}
+              disabled={isLoading || loading}
               onChange={handleCategoryChange}
             >
               {isLoading ? (
@@ -66,7 +90,7 @@ const PostInfo: React.FC<PostInfoProps> = ({
                 </MenuItem>
               ) : (
                 data?.map((category) => (
-                  <MenuItem key={category.id} value={category.id.toString()}>
+                  <MenuItem key={category.id} value={category.id}>
                     {category.name}
                   </MenuItem>
                 ))
@@ -75,7 +99,10 @@ const PostInfo: React.FC<PostInfoProps> = ({
           </FormControl>
         </Box>
       </Box>
-      <ImageUploader onUploadComplete={onImageChange} />
+      <ImageUploader
+        onUploadComplete={onImageChange}
+        initialImageUrl={initialImage}
+      />
     </>
   );
 };

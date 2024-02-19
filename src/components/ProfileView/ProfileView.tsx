@@ -41,7 +41,6 @@ interface ProfileViewProps {
 }
 
 const ProfileView: React.FC<ProfileViewProps> = ({ user }) => {
-  console.log("user", user);
   return (
     <Container
       maxWidth={"xl"}

@@ -100,4 +100,79 @@ export const postsRouter = createTRPCRouter({
         include: { Category: true, author: true },
       });
     }),
+
+  getUserPosts: publicProcedure
+    .input(
+      z.object({
+        authorId: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { authorId } = input;
+      return ctx.prisma.post.findMany({
+        where: { authorId },
+        include: { Category: true, author: true },
+        orderBy: { createdAt: "desc" },
+      });
+    }),
+
+  updatePost: publicProcedure
+    .input(
+      z.object({
+        postId: z.string(),
+        title: z.string().optional(),
+        categoryId: z.string().optional(),
+        image: z.string().optional(),
+        content: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { postId, title, categoryId, image, content } = input;
+
+      const data: {
+        title?: string;
+        image?: string;
+        content?: string;
+        Category?: { connect: { id: string } };
+      } = {};
+
+      if (title) {
+        data.title = title;
+      }
+
+      if (categoryId) {
+        data.Category = {
+          connect: {
+            id: categoryId,
+          },
+        };
+      }
+
+      if (image) {
+        data.image = image;
+      }
+
+      if (content) {
+        data.content = content;
+      }
+
+      return ctx.prisma.post.update({
+        where: { id: postId },
+        data,
+        include: { Category: true, author: true },
+      });
+    }),
+
+  deletePost: publicProcedure
+    .input(
+      z.object({
+        postId: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { postId } = input;
+      return ctx.prisma.post.delete({
+        where: { id: postId },
+      });
+    }),
 });

@@ -1,6 +1,7 @@
 import { Button, Container, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import AlertMessage from "~/components/AlertMessage/AlertMessage";
 import { Editor } from "~/components/Editor/Editor";
@@ -21,6 +22,7 @@ const CreatePost: React.FC = () => {
   const handleCloseSnackbar = () => setSnackbarOpen(false);
 
   const mutation = api.posts.createPost.useMutation();
+  const router = useRouter();
 
   const handleSubmit = async () => {
     try {
@@ -36,9 +38,9 @@ const CreatePost: React.FC = () => {
       setSnackbarSeverity("success");
       setSnackbarOpen(true);
 
-      setInterval(function () {
-        window.location.reload();
-      }, 3000);
+      setTimeout(() => {
+        router.push("/admin/listPosts").catch((err) => console.error(err));
+      }, 1000);
     } catch (error) {
       console.error("Gönderi oluşturulurken bir hata oluştu:", error);
 
