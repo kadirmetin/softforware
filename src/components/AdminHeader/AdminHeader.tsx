@@ -1,3 +1,4 @@
+import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { AppBar, Box, Button, Container, Typography } from "@mui/material";
 import { signOut } from "next-auth/react";
@@ -18,6 +19,14 @@ const Header = () => {
     }
   }, [router]);
 
+  const goHome = async () => {
+    try {
+      await router.push("/");
+    } catch (error) {
+      console.error("Error going home: ", error);
+    }
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -37,10 +46,16 @@ const Header = () => {
               variant="subtitle2"
               className="rounded-lg bg-slate-700 p-1 text-xs"
             >
-              Admin Panel - v1.1
+              Admin Panel - v1.2
             </Typography>
           </Box>
           <Box className="flex items-center justify-center">
+            <Button onClick={goHome} aria-label="Sign Out">
+              <HomeIcon fontSize="small" className="mr-1 text-white" />
+              <Typography variant="subtitle2" className="text-white">
+                Anasayfa
+              </Typography>
+            </Button>
             <Button onClick={handleSignOut} aria-label="Sign Out">
               <LogoutIcon fontSize="small" className="mr-1 text-white" />
               <Typography variant="subtitle2" className="text-white">

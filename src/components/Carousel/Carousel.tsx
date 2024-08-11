@@ -1,10 +1,8 @@
-import React from "react";
-import MUICarousel from "react-material-ui-carousel";
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import PersonIcon from "@mui/icons-material/Person";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import Link from "next/link";
-
+import MUICarousel from "react-material-ui-carousel";
 import { api } from "~/utils/api";
 import getFormattedTimeElapsed from "~/utils/time";
 import SkeletonCarousel from "./components/SkeletonCarousel";

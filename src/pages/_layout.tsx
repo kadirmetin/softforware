@@ -4,6 +4,7 @@ import Head from "next/head";
 import React from "react";
 import Footer from "~/components/Footer/Footer";
 import Header from "~/components/Header/Header";
+import { siteMetaData } from "~/lib/siteMetaData";
 
 export default function RootLayout({
   children,
@@ -13,7 +14,7 @@ export default function RootLayout({
   return (
     <>
       <Head>
-        <title>Softforware Blog</title>
+        <title>{siteMetaData.title}</title>
         <meta name="description" content="Blog for developers" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

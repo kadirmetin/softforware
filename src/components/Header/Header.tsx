@@ -10,13 +10,13 @@ import UserMenu from "./components/UserMenu";
 const pages = [
   {
     id: 1,
-    title: "İletişim",
-    url: "https://www.softforware.com/#container5",
+    title: "Hakkımızda",
+    url: "https://www.softforware.com/#hakkimizda",
   },
   {
     id: 2,
-    title: "Hakkımızda",
-    url: "https://www.softforware.com/",
+    title: "İletişim",
+    url: "https://www.softforware.com/#iletisim",
   },
 ];
 
