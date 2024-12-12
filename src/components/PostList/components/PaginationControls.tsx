@@ -4,7 +4,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Box, IconButton, Typography } from "@mui/material";
 import { useRouter, useSearchParams } from "next/navigation";
-import { FC } from "react";
+import type { FC } from "react";
 
 interface PaginationControlsProps {
   hasNextPage: boolean;
