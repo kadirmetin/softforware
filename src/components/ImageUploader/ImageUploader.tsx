@@ -88,6 +88,8 @@ export default function ImageUploader({
             const url = res[0].url;
             onUploadComplete(url);
 
+            console.log(res);
+
             alert("Yükleme başarılı!");
             setIsEditing(true);
             setImageUrl(url);
