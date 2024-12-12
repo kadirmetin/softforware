@@ -74,7 +74,7 @@ export default function ImageUploader({
         </Box>
       ) : (
         <UploadDropzone
-          className="ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 w-full rounded-lg border-2 border-dashed border-white bg-[#121212]"
+          className="ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300 w-full cursor-pointer rounded-lg border-2 border-dashed border-white bg-[#121212]"
           endpoint="imageUploader"
           onClientUploadComplete={(res) => {
             if (!res?.[0]?.url) {
